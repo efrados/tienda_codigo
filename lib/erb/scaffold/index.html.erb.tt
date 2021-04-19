@@ -1,0 +1,47 @@
+<div class="container mx-auto my-8 px-4">
+  <div class="flex justify-between items-center mb-4">
+    <h2 class="pb-3 my-4 border-bottom font-weight-bold">
+      <%= plural_table_name.titleize %>
+    <%% if @<%= plural_table_name %>.exists? %>
+      <%%= link_to fas_icon('fa-plus fa-lg mr-2') + ' Crear', new_<%= singular_route_name %>_path, class: "btn btn-primary float-right font-weight-bold" %>
+    <%% end %>
+    </h2>
+</div>
+
+  <%% if @<%= plural_table_name %>.exists? %>
+    <div class="bg-white rounded shadow table-responsive">
+      <table class="w-full table table-striped table-bordered table-hover">
+        <thead>
+          <tr>
+<% attributes.reject(&:password_digest?).each do |attribute| -%>
+            <th class="p-3 uppercase text-gray-700"><%= attribute.human_name %></th>
+<% end -%>
+            <th class="p-3"></th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <%% @<%= plural_table_name %>.each do |<%= singular_table_name %>| %>
+            <tr class="border-t border-gray-400 hover:bg-gray-100">
+<% attributes.reject(&:password_digest?).each do |attribute| -%>
+              <td class="p-3"><%%= <%= singular_table_name %>.<%= attribute.column_name %> %></td>
+<% end -%>
+              <td class="p-3">
+                <%%= link_to far_icon('fa-eye'), <%= singular_table_name %>, class: "btn btn-info btn-sm" %>
+                <%%= link_to far_icon('fa-edit'), edit_<%= singular_table_name %>_path(<%= singular_table_name %>), class: "btn btn-primary btn-sm" %>
+                <%%= link_to far_icon('fa-trash-alt'), <%= singular_table_name %>, method: :delete, data: { confirm: 'Estas seguro de querer borrar este elemento?' }, class: "btn btn-sm btn-danger" %>
+              </td>
+            </tr>
+          <%% end %>
+        </tbody>
+      </table>
+    </div>
+
+  <%% else %>
+    <div class="bg-white rounded shadow flex items-center justify-between p-8">
+      <div class="flex-1 text-center">
+        <%%= link_to 'Crear <%= singular_table_name.titleize %>', new_<%= singular_table_name %>_path, class: "btn btn-primary" %>
+      </div>
+    </div>
+  <%% end %>
+</div>
