@@ -27,18 +27,18 @@
 
 ## Models
 
-######Product
+###### Product
 - product_name product_description product_price:decimal
 - product_text:text fav_counter:integer query_counter:integer
 
-######QueryProduct
+###### QueryProduct
 - user:references query_text:text query_name:string query_email:string state:string
 
-######User
+###### User
 - add first_name last_name
 
-######Admin
+###### Admin
 - add class
 
-######Favorite
+###### Favorite
 - user:references product:references
