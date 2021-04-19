@@ -6,7 +6,7 @@ RSpec.feature "Listing HomePage" do
     visit "/"
 
     expect(page).to have_content('Welcome!') 
-    expect(page).not_to have_link('Home')
+    expect(page).to have_link('Home')
   end
 
 end
