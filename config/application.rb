@@ -23,16 +23,11 @@ module TiendaCodigo
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 6.1
-
-    # Configuration for the application, engines, and railties goes here.
-    #
-    # These settings can be overridden in specific environments using the files
-    # in config/environments, which are processed later.
-    #
-    # config.time_zone = "Central Time (US & Canada)"
-    # config.eager_load_paths << Rails.root.join("extras")
-
-    # Don't generate system test files.
+    
+    ActionView::Base.field_error_proc = proc do |html_tag, instance|
+      html_tag.gsub("form-control", "form-control is-invalid").html_safe
+    end
+    
     config.generators.system_tests = nil
   end
 end

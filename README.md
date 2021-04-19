@@ -8,6 +8,7 @@
 ###### UI
 - Bootstrap5
 - Bootstrap5 Icons
+- Devise views with Bootstrap 5
 
 ###### Login/Logout Users
 - Devise
