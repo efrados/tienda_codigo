@@ -3,15 +3,21 @@
 ###### Testing
 - Rspec
 - Capybara
+- Guards
+
+###### UI
+- Bootstrap5
 
 ## TO DO's
+
+## Testing
+- Install Factories
 
 ## Security
 - Devise
 - Administrate?
 
 ## UI
-- Install Bootstrap5
 - Add Bootstrap5 Icons
 - Update Scaffold HTML's to include Bootstrap
 - Update Devise views to use Bootstrap 5

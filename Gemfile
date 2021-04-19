@@ -14,6 +14,8 @@ gem 'bootsnap', '>= 1.4.4', require: false
 group :development, :test do
   gem 'rspec-rails'
   gem 'sqlite3', '~> 1.4'
+  gem 'guard'
+  gem 'guard-rspec'
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
 end
 
