@@ -7,8 +7,9 @@
 
 ###### UI
 - Bootstrap5
+- Bootstrap5 Icons
 
-###### Login Users
+###### Login/Logout Users
 - Devise
 
 ## TO DO's
@@ -21,7 +22,6 @@
 - Administrate gem?
 
 ## UI
-- Add Bootstrap5 Icons
 - Update Scaffold HTML's to include Bootstrap
 - Update Devise views to use Bootstrap 5
 
