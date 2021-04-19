@@ -8,14 +8,17 @@
 ###### UI
 - Bootstrap5
 
+###### Login Users
+- Devise
+
 ## TO DO's
 
 ## Testing
 - Install Factories
 
 ## Security
-- Devise
-- Administrate?
+- Administrator class
+- Administrate gem?
 
 ## UI
 - Add Bootstrap5 Icons
@@ -23,12 +26,19 @@
 - Update Devise views to use Bootstrap 5
 
 ## Models
+
 ######Product
-product_name product_description product_price:decimal
-product_text:text fav_counter:integer query_counter:integer
+- product_name product_description product_price:decimal
+- product_text:text fav_counter:integer query_counter:integer
+
 ######QueryProduct
-user:references query_text:text query_name:string query_email:string state:string
+- user:references query_text:text query_name:string query_email:string state:string
+
 ######User
-add first_name last_name
+- add first_name last_name
+
+######Admin
+- add class
+
 ######Favorite
-user:references product:references
+- user:references product:references

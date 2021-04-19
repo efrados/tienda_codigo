@@ -1,1 +1,14 @@
 @import "~bootstrap/scss/bootstrap";
+@import "~bootstrap/scss/_variables.scss";
+
+.bd-navbar{
+  padding: .75rem 0;
+  background-color: $orange-400;
+}
+
+#error_explanation {
+  ul li {
+    font-size: 12px;
+    list-style: none;
+  }
+}
