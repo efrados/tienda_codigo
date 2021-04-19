@@ -1,9 +1,10 @@
 # Tienda Codigo
-## TO DO's
 
-## Testing
-- Install Rspec
-- Install Capybara
+###### Testing
+- Rspec
+- Capybara
+
+## TO DO's
 
 ## Security
 - Devise
@@ -13,14 +14,15 @@
 - Install Bootstrap5
 - Add Bootstrap5 Icons
 - Update Scaffold HTML's to include Bootstrap
+- Update Devise views to use Bootstrap 5
 
 ## Models
--Product
+######Product
 product_name product_description product_price:decimal
 product_text:text fav_counter:integer query_counter:integer
--QueryProduct
+######QueryProduct
 user:references query_text:text query_name:string query_email:string state:string
--User
+######User
 add first_name last_name
--Favorite
+######Favorite
 user:references product:references
