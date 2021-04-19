@@ -11,12 +11,12 @@
         </li>
 
         <li class="pt-1 ms-3">
-          <%= form_tag("#", class: "row g-4") do %>
+          <%= form_tag("#", class: "row g-1") do %>
           <div class="col-auto">
             <%= text_field_tag :search_name, @search_name, placeholder: "Search Products", class: "form-control form-control-sm col-sm-1" %>
           </div>
           <div class="col-auto">
-            <button class="btn btn-sm btn-outline-primary" type="submit">Search</button>
+            <button class="btn btn-sm btn-outline-primary bi bi-search" type="submit"> Search</button>
           </div>
         <% end %>
         </li>
