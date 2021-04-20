@@ -18,11 +18,9 @@ RSpec.feature "Listing products" do
   scenario "with a logged in user" do
     visit "/"
     expect(page).to have_content(@p1.product_name)
-    expect(page).to have_content(@p1.product_description)
     expect(page).to have_content(@p1.product_price)
 
     expect(page).to have_content(@p2.product_name)
-    expect(page).to have_content(@p2.product_description)
     expect(page).to have_content(@p2.product_price)
 
     #expect(page).not_to have_content(@p1.product_text)

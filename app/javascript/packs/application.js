@@ -14,3 +14,25 @@ import 'bootstrap/js/src/dropdown'
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
+
+document.addEventListener('turbolinks:load', function() {
+  const cards = document.querySelectorAll(".product-card");
+  cards.forEach(function(el) {
+    el.addEventListener("mouseenter", function( event ) {
+      // highlight the mouseenter target
+console.log("hola");
+      event.target.classList.add('shadow');
+      event.target.style.border = "1px solid black"
+      event.target.querySelector(".product-description").classList.toggle('show');
+      // reset the color after a short delay
+      setTimeout(function() {
+        event.target.style.border = ""
+      }, 800);
+    }, false);
+    el.addEventListener("mouseleave", function( event ) {
+      event.target.classList.remove('shadow');
+      event.target.querySelector(".product-description").classList.remove('show');
+      // reset the color after a short delay
+    }, false);
+  });
+});
