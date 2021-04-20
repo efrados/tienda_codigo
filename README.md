@@ -21,6 +21,9 @@
 ###### Model/ Product
 - product_name product_description product_price:decimal product_text:text fav_counter:integer query_counter:integer
 
+###### Model/ QueryProduct
+- user:references(optional) product:references query_text:text query_name:string query_email:string state:string
+
 ## TO DO's
 
 ## Testing
@@ -43,9 +46,6 @@ Show products view
 - send mail confirmation
 
 ## Models
-
-###### QueryProduct
-- user:references query_text:text query_name:string query_email:string state:string
 
 ###### Admin
 - add class

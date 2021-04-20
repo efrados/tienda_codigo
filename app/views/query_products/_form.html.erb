@@ -1,0 +1,22 @@
+<%= form_for [@product, @query_product] do |form| %>
+  <%= render "shared/errors",  :target => @query_product %>
+
+  <div class="mb-3">
+    <%= form.label :query_name, class: "form-label" %>
+    <%= form.text_field :query_name, class: "form-control" %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :query_email, class: "form-label" %>
+    <%= form.text_field :query_email, class: "form-control" %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :query_text, class: "form-label" %>
+    <%= form.text_area :query_text, class: "form-control" %>
+  </div>
+
+  <div class="actions mt-5 d-flex justify-content-center">
+    <%= form.submit 'Send Query', class: "btn btn-primary ", data: { disable_with: "Wait..." } %>
+  </div>
+<% end %>

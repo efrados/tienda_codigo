@@ -31,3 +31,9 @@
 
 en:
   hello: "Hello world"
+  activerecord:
+    attributes:
+      query_product:
+        query_text:   "Text"
+        query_name:   "Name"
+        query_email:  "Email"
