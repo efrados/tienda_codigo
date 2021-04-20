@@ -1,2 +1,10 @@
 <h1>Welcome!</h1>
 <%= link_to 'Home', '#' %>
+<% if @products.empty? %>
+  More products are coming
+<% else %>
+  <%= @products.inspect %>
+  <%= @products.each do |product| %>
+    <%= number_to_currency product.product_price %>
+  <% end %>
+<% end %>

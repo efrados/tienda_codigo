@@ -14,6 +14,10 @@
 ###### Login/Logout Users
 - Devise
 
+###### Model/User
+- email, password, first_name, last_name
+
+
 ## TO DO's
 
 ## Testing
@@ -24,19 +28,20 @@
 - Administrate gem?
 
 ## UI
+List products view
 
+## Mails
+
+###### User
+- send mail confirmation
 
 ## Models
 
 ###### Product
-- product_name product_description product_price:decimal
-- product_text:text fav_counter:integer query_counter:integer
+- product_name product_description product_price:decimal product_text:text fav_counter:integer query_counter:integer
 
 ###### QueryProduct
 - user:references query_text:text query_name:string query_email:string state:string
-
-###### User
-- add first_name last_name
 
 ###### Admin
 - add class
