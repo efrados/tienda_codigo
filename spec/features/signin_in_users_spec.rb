@@ -3,7 +3,7 @@ require "rails_helper"
 RSpec.feature "Signing in Users" do
 
   before do
-    @john = User.create!(email: "john@example.com", password: "password") 
+    @john = User.create!(email: "john@example.com", password: "password", first_name: "john", last_name: "doe")
   end
 
   scenario "with valid credentials" do
@@ -19,4 +19,4 @@ RSpec.feature "Signing in Users" do
     expect(page).not_to have_link("Sign in") 
     expect(page).not_to have_link("Sign up")
   end
-end 
+end
