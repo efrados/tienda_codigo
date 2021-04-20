@@ -5,24 +5,23 @@
   <div class="container overflow-hidden mb-4">
     <div class="row gx-3 gy-4">
       <% @products.each do |product| %>
-          <div class="col col-lg-4 col-md-6 rounded-3">
-            <div class="card bg-white product-card">
-              
-                <div class="bg-white d-flex justify-content-center" >
-                  <img src="https://www.w3schools.com/css/img_lights.jpg" class="d-block w-100">
-                </div>
-                <div class="card-body pb-3">
-                  <h5 class="card-title"><%= product.product_name.capitalize %></h5>
-                  <div class="card-text">
-                    <%= number_to_currency product.product_price %>
-                    <%= link_to '', product_path(product), class: "stretched-link" %>
-                  </div>
-                  <p class="mb-0 mt-2 product-description collapse text-muted" >
-                    <%= product.product_description.capitalize %>
-                  </p>
-                </div>
+        <div class="col col-lg-4 col-md-6 rounded-3">
+          <div class="card bg-white product-card">
+            <div class="bg-white d-flex justify-content-center" >
+              <img src="https://www.w3schools.com/css/img_lights.jpg" class="d-block w-100">
+            </div>
+            <div class="card-body pb-3">
+              <h5 class="card-title"><%= product.product_name.capitalize %></h5>
+              <div class="card-text">
+                <%= number_to_currency product.product_price %>
+                <%= link_to '', product_path(product), class: "stretched-link" %>
+              </div>
+              <p class="mb-0 mt-2 product-description collapse text-muted" >
+                <%= product.product_description.capitalize %>
+              </p>
             </div>
           </div>
+        </div>
       <% end %>
     </div>
   </div>

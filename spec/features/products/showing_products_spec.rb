@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.feature "Listing products" do
+RSpec.feature "Showing product" do
 
   before do
     @john = User.create!(email: "john@example.com", password: "password", first_name: "john", last_name: "doe")
@@ -17,26 +17,19 @@ RSpec.feature "Listing products" do
 
   scenario "with a logged in user" do
     visit "/"
+    click_link(href: product_path(@p1))
+
     expect(page).to have_content(@p1.product_name)
     expect(page).to have_content(@p1.product_price)
+    expect(page).to have_link(nil, href: product_path(@p1))
+    expect(page).to have_content(@p1.product_text)
 
-    expect(page).to have_content(@p2.product_name)
-    expect(page).to have_content(@p2.product_price)
-
-    #expect(page).not_to have_content(@p1.product_text)
-  end
-
-
-  scenario "with no products created" do
-    @p1.destroy
-    @p2.destroy
-
-    visit "/"
-
-    expect(page).not_to have_content(@p1.product_name)
-    expect(page).not_to have_content(@p1.product_description)
-    expect(page).not_to have_content(@p1.product_price)
-    expect(page).to have_content("More products are coming")
+    expect(page).not_to have_content(@p2.product_name)
+    expect(page).not_to have_content(@p2.product_price)
+    expect(page).not_to have_link(nil, href: product_path(@p2))
+    expect(page).not_to have_content(@p2.product_text)
 
   end
+
+
 end

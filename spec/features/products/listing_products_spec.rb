@@ -19,11 +19,11 @@ RSpec.feature "Listing products" do
     visit "/"
     expect(page).to have_content(@p1.product_name)
     expect(page).to have_content(@p1.product_price)
-    expect(page).to have_link(product_path(@p1))
+    expect(page).to have_link(nil, href: product_path(@p1))
 
     expect(page).to have_content(@p2.product_name)
     expect(page).to have_content(@p2.product_price)
-    expect(page).to have_link(product_path(@p2))
+    expect(page).to have_link(nil, href: product_path(@p2))
 
     expect(page).not_to have_content(@p1.product_text)
     expect(page).not_to have_content(@p2.product_text)
