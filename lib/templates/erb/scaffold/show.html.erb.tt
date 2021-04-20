@@ -3,13 +3,13 @@
 <% attributes.reject(&:password_digest?).each do |attribute| -%>
   <dl class="row mb-2">
     <dt class="col-sm-3 text-right"><%= attribute.human_name %>:</dt>
-    <dd class="col-sm-9"><%%= <%= singular_table_name %>.<%= attribute.name %> %></dd>
+    <dd class="col-sm-9"><%%= @<%= singular_table_name %>.<%= attribute.name %> %></dd>
   </dl>
   <% end -%>
   <div class= "row mt-5">
     <div class="col-12 mt-5">
-      <%%= link_to " Back to <%= human_name.pluralize.downcase %>", <%= index_helper %>_path, class: "bi bi-chevron-left btn btn-secondary" %>
-      <%%= link_to ' Edit', edit_<%= singular_table_name %>_path(@<%= singular_table_name %>), class: "bi bi-pencil btn btn-primary ml-5" %>
+      <%%= link_to " Back to <%= human_name.pluralize.downcase %>", <%= index_helper %>_path, class: "bi bi-chevron-left btn btn-secondary text-white" %>
+      <%%= link_to ' Edit', edit_<%= singular_table_name %>_path(@<%= singular_table_name %>), class: "bi bi-pencil btn btn-primary ms-5 text-white" %>
     </div>
   </div>
 </div>

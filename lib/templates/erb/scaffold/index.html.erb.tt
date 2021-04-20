@@ -3,7 +3,7 @@
     <h2 class="pb-3 my-4 border-bottom font-weight-bold">
       <%= plural_table_name.titleize %>
     <%% if @<%= plural_table_name %>.exists? %>
-      <%%= link_to fas_icon('fa-plus fa-lg mr-2') + ' Crear', new_<%= singular_route_name %>_path, class: "btn btn-primary float-right font-weight-bold" %>
+      <%%= link_to ' Create', new_<%= singular_route_name %>_path, class: "bi bi-plus  text-white btn btn-primary float-end font-weight-bold" %>
     <%% end %>
     </h2>
 </div>
@@ -27,9 +27,9 @@
               <td class="p-3"><%%= <%= singular_table_name %>.<%= attribute.column_name %> %></td>
 <% end -%>
               <td class="p-3">
-                <%%= link_to far_icon('fa-eye'), <%= singular_table_name %>, class: "btn btn-info btn-sm" %>
-                <%%= link_to far_icon('fa-edit'), edit_<%= singular_table_name %>_path(<%= singular_table_name %>), class: "btn btn-primary btn-sm" %>
-                <%%= link_to far_icon('fa-trash-alt'), <%= singular_table_name %>, method: :delete, data: { confirm: 'Estas seguro de querer borrar este elemento?' }, class: "btn btn-sm btn-danger" %>
+                <%%= link_to '',<%= singular_table_name %>, class: "bi bi-eye btn btn-info btn-sm text-white" %>
+                <%%= link_to '', edit_<%= singular_table_name %>_path(<%= singular_table_name %>), class: "bi bi-pencil btn btn-primary btn-sm text-white" %>
+                <%%= link_to '', <%= singular_table_name %>, method: :delete, data: { confirm: 'Estas seguro de querer borrar este elemento?' }, class: "bi bi-trash btn btn-sm btn-danger text-white" %>
               </td>
             </tr>
           <%% end %>
@@ -38,9 +38,9 @@
     </div>
 
   <%% else %>
-    <div class="bg-white rounded shadow flex items-center justify-between p-8">
-      <div class="flex-1 text-center">
-        <%%= link_to 'Crear <%= singular_table_name.titleize %>', new_<%= singular_table_name %>_path, class: "btn btn-primary" %>
+    <div class="py-3 bg-white rounded shadow d-flex justify-content-center p-8">
+      <div class="d-flex justify-content-center">
+        <%%= link_to ' Create <%= singular_table_name.titleize %>', new_<%= singular_table_name %>_path, class: "bi bi-plus btn btn-primary text-white" %>
       </div>
     </div>
   <%% end %>
