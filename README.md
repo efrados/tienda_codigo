@@ -10,6 +10,7 @@
 - Bootstrap5 Icons
 - Devise views with Bootstrap 5
 - Update Scaffold with Bootstrap 5
+- List Products with Bootstrap 5
 
 ###### Login/Logout Users
 - Devise
@@ -17,6 +18,8 @@
 ###### Model/User
 - email, password, first_name, last_name
 
+###### Model/ Product
+- product_name product_description product_price:decimal product_text:text fav_counter:integer query_counter:integer
 
 ## TO DO's
 
@@ -28,7 +31,11 @@
 - Administrate gem?
 
 ## UI
-List products view
+Show products view
+
+## Image
+- install Active storage
+- install resizing images tools
 
 ## Mails
 
@@ -36,9 +43,6 @@ List products view
 - send mail confirmation
 
 ## Models
-
-###### Product
-- product_name product_description product_price:decimal product_text:text fav_counter:integer query_counter:integer
 
 ###### QueryProduct
 - user:references query_text:text query_name:string query_email:string state:string

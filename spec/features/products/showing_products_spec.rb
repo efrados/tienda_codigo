@@ -21,8 +21,9 @@ RSpec.feature "Showing product" do
 
     expect(page).to have_content(@p1.product_name)
     expect(page).to have_content(@p1.product_price)
-    expect(page).to have_link(nil, href: product_path(@p1))
     expect(page).to have_content(@p1.product_text)
+    expect(page).to have_content(@p1.product_description)
+    expect(page).not_to have_link(nil, href: product_path(@p1))
 
     expect(page).not_to have_content(@p2.product_name)
     expect(page).not_to have_content(@p2.product_price)

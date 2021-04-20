@@ -1,14 +1,18 @@
-<div class="card mb-3" style="max-width: 540px;">
-  <div class="row g-0">
-    <div class="col-md-4">
-      <img src="..." alt="...">
+<div class="row no-gutters bg-light position-relative">
+  <div class="col-lg-8 col-md-9 mb-md-0 p-md-2">
+    <img src="https://www.w3schools.com/css/img_lights.jpg" class="d-block w-100">
+  </div>
+  <div class="col-lg-4 col-md-3 position-static py-3 pe-2 pl-md-0 h-auto d-inline-block">
+    <div class="h-100 py-2 pe-2">
+        <h5 class="card-title"><%= @product.product_name.capitalize %></h5>
+
+        <div class="card-text mt-3">
+          <h4><%= number_to_currency @product.product_price %></h4>
+        </div>
     </div>
-    <div class="col-md-8">
-      <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-      </div>
-    </div>
+  </div>
+  <div class="col-md-12 p-3">
+    <h6 class="mt-0"><%= @product.product_description.capitalize %></h6>
+    <p><%= @product.product_text.capitalize %> </p>
   </div>
 </div>
