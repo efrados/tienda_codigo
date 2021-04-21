@@ -4,7 +4,7 @@ RSpec.feature "Signing in Users" do
 
   before do
     @john = User.create(email: "john@example.com", password: "password", first_name: "john", last_name: "doe")
-    
+    logout
   end
 
   scenario "with valid credentials" do

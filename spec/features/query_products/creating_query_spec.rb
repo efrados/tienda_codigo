@@ -5,7 +5,6 @@ RSpec.feature "Creating a Query for a product" do
   before do
     @john = User.create!(email: "john@example.com", password: "password", first_name: "john", last_name: "doe")
     login_as(@john)
-    logout
     @p1 = Product.create(product_name: "Product name 1",
                         product_description: "product description 1",
                         product_price: 10.50,
@@ -16,9 +15,9 @@ RSpec.feature "Creating a Query for a product" do
     visit "/"
     click_link(href: product_path(@p1))
     expect(page).not_to have_content("Thanks for submiting a query!")
-    expect(page).not_to have_field('query_email')
-    expect(page).not_to have_field('query_name')
-    fill_in "Query Text", with: "Query text"
+    expect(page).not_to have_field('Email')
+    expect(page).not_to have_field('Name')
+    fill_in "Text", with: "Query text"
     click_button "Submit Query"
 
     expect(page).to have_content("Thanks for submiting a query!")
@@ -31,8 +30,8 @@ RSpec.feature "Creating a Query for a product" do
       logut
       visit "/"
       click_link(href: product_path(@p1))
-      fill_in "Query Email", with: "example@example.com"
-      fill_in "Query Name", with: "Peter"
+      fill_in "Email", with: "example@example.com"
+      fill_in "Name", with: "Peter"
     end
 
     scenario "and valid query" do
