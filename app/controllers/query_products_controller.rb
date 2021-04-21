@@ -8,8 +8,7 @@ class QueryProductsController < ApplicationController
       flash[:notice] = "Thanks for submiting a query!"
       redirect_to product_path(@product)
     else
-      flash[:alert] = "Query has not been created"
-      redirect_to product_path(@product)
+      render 'products/show'
     end
   end
 

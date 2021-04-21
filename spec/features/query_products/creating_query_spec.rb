@@ -17,7 +17,7 @@ RSpec.feature "Creating a Query for a product" do
     expect(page).not_to have_content("Thanks for submiting a query!")
     expect(page).not_to have_field('Email')
     expect(page).not_to have_field('Name')
-    fill_in "Text", with: "Query text"
+    fill_in "query_product_query_text", with: "Query text"
     click_button "Submit Query"
 
     expect(page).to have_content("Thanks for submiting a query!")
@@ -25,18 +25,18 @@ RSpec.feature "Creating a Query for a product" do
 
   end
 
-  pending "with an unregistered in user" do
+  context "with an unregistered in user" do
     before do
-      logut
+      logout
       visit "/"
       click_link(href: product_path(@p1))
-      fill_in "Email", with: "example@example.com"
-      fill_in "Name", with: "Peter"
     end
 
     scenario "and valid query" do
-      fill_in "Text", with: "Query text"
-      click_button "Submit query"
+      fill_in "Email", with: "example@example.com"
+      fill_in "Name", with: "Peter"
+      fill_in "query_product_query_text", with: "Query text"
+      click_button "Submit Query"
 
       expect(page).to have_content("Thanks for submiting a query!")
       expect(current_path).to eq(product_path(@p1))
@@ -44,11 +44,11 @@ RSpec.feature "Creating a Query for a product" do
 
 
     scenario "and invalid query" do
-      fill_in "Text", with: ""
-      click_button "Submit query"
+      fill_in "query_product_query_text", with: ""
+      click_button "Submit Query"
 
-      expect(page).to have_content("Please fill in the forms")
-      expect(current_path).to eq(product_path(@p1))
+      expect(page).to have_content("did not allow to save this query product")
+      expect(current_path).not_to eq(product_path(@p1))
     end
   end
 end
