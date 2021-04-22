@@ -1,6 +1,10 @@
 <div class="row no-gutters bg-light position-relative">
   <div class="col-lg-8 col-md-9 mb-md-0 p-md-2">
-    <img src="https://www.w3schools.com/css/img_lights.jpg" class="d-block w-100">
+    <% if @product.image.attached? %>
+      <%= image_tag @product.display_image, class: 'd-block w-100' %>
+    <% else %>
+      <img src="https://www.w3schools.com/css/img_lights.jpg" class="d-block w-100">
+    <% end %>
   </div>
   <div class="col-lg-4 col-md-3 position-static py-3 pe-2 pl-md-0 h-auto d-inline-block">
     <div class="h-100 py-2 pe-2">

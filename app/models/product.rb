@@ -9,10 +9,10 @@ class Product < ApplicationRecord
                                    message:   "should be less than 5MB" }
 
   def display_image
-    image.variant(resize_to_limit: [430, 287]).processed
+    image.variant(gravity: "Center", resize: "630X487^", crop: '630X487+0+0').processed
   end
 
   def display_image_list
-    image.variant(resize_to_limit: [186.6, 124.4]).processed
+    image.variant(gravity: "Center", resize: "430X287^", crop: '430X287+0+0').processed
   end
 end

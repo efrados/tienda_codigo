@@ -9,7 +9,7 @@
           <div class="card bg-white product-card">
             <div class="bg-white d-flex justify-content-center" >
               <% if product.image.attached? %>
-                <%= image_tag product.display_image, class: 'd-block w-100' %>
+                <%= image_tag product.display_image_list, class: 'd-block w-100' %>
               <% else %>
                 <img src="https://www.w3schools.com/css/img_lights.jpg" class="d-block w-100">
               <% end %>
