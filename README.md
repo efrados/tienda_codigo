@@ -5,6 +5,10 @@
 - Capybara
 - Guards
 
+###### Mails - Sendgrid
+- Working in development for devise
+- Automatic mail when sent a query
+
 ###### UI
 - Stimulus for: send product_query
 - Bootstrap5
@@ -35,13 +39,12 @@
 - Administrate gem?
 
 ## UI
-Show products view
+
 
 ## Image
 - install Active storage
 - install resizing images tools
 
-## Mails
 
 ###### User
 - send mail confirmation

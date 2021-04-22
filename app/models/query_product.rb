@@ -9,4 +9,8 @@ class QueryProduct < ApplicationRecord
   def full_name
     user ? user.full_name : query_name
   end
+
+  def email
+    user ? user.email : query_email
+  end
 end
