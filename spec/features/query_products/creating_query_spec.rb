@@ -14,15 +14,13 @@ RSpec.feature "Creating a Query for a product" do
   scenario "with a logged in user" do
     visit "/"
     click_link(href: product_path(@p1))
-    expect(page).not_to have_content("Thanks for submiting a query!")
+    expect(page).not_to have_content("Thanks for submiting a query")
     expect(page).not_to have_field('Email')
     expect(page).not_to have_field('Name')
     fill_in "query_product_query_text", with: "Query text"
     click_button "Submit Query"
 
-    expect(page).to have_content("Thanks for submiting a query!")
-    expect(current_path).to eq(product_path(@p1))
-
+    expect(page).to have_content("Thanks for submiting a query")
   end
 
   context "with an unregistered in user" do
@@ -38,8 +36,7 @@ RSpec.feature "Creating a Query for a product" do
       fill_in "query_product_query_text", with: "Query text"
       click_button "Submit Query"
 
-      expect(page).to have_content("Thanks for submiting a query!")
-      expect(current_path).to eq(product_path(@p1))
+      expect(page).to have_content("Thanks for submiting a query")
     end
 
 
@@ -48,7 +45,6 @@ RSpec.feature "Creating a Query for a product" do
       click_button "Submit Query"
 
       expect(page).to have_content("did not allow to save this query product")
-      expect(current_path).not_to eq(product_path(@p1))
     end
   end
 end

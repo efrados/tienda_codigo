@@ -6,6 +6,7 @@
 - Guards
 
 ###### UI
+- Stimulus for: send product_query
 - Bootstrap5
 - Bootstrap5 Icons
 - Devise views with Bootstrap 5
