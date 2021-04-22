@@ -14,6 +14,7 @@ import 'bootstrap/js/src/dropdown'
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
+import 'controllers'
 
 document.addEventListener('turbolinks:load', function() {
   const cards = document.querySelectorAll(".product-card");

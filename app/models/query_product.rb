@@ -5,4 +5,8 @@ class QueryProduct < ApplicationRecord
   validates :query_name, presence: true, length: { in: 3..20 }, if: lambda { self.user.nil? }
   validates :query_email, presence: true, length: { in: 6..20 },
     format: { with: Devise::email_regexp }, if: lambda { self.user.nil? }
+
+  def full_name
+    user ? user.full_name : query_name
+  end
 end

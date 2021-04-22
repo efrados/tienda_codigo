@@ -5,10 +5,9 @@ class QueryProductsController < ApplicationController
     @query_product = @product.query_products.build(query_product_params)
     @query_product.user = current_user
     if @query_product.save
-      flash[:notice] = "Thanks for submiting a query!"
-      redirect_to product_path(@product)
+      render 'success', layout: false
     else
-      render 'products/show'
+      render partial: 'form', layout: false
     end
   end
 

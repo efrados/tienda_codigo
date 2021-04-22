@@ -1,24 +1,28 @@
-<%= form_for([@product, @query_product]) do |form| %>
-  <%= render "shared/errors",  :target => @query_product %>
-  <% if !user_signed_in? %>
+<div data-query-product-target="errors">
+  <%= form_for([@product, @query_product], remote: true, html: { data: { action: "ajax:success->query-product#showError ajax:error->query-product#showError"} }) do |form| %>
+    <div data-query-product-target="spinner">
+    </div>
+    <%= render "shared/errors",  :target => @query_product %>
+    <% if !user_signed_in? %>
+      <div class="mb-3">
+        <%= form.label :query_name, class: "form-label" %>
+        <%= form.text_field :query_name, class: "form-control" %>
+      </div>
+
+      <div class="mb-3">
+        <%= form.label :query_email, class: "form-label" %>
+        <%= form.text_field :query_email, class: "form-control" %>
+      </div>
+    <% end %>
     <div class="mb-3">
-      <%= form.label :query_name, class: "form-label" %>
-      <%= form.text_field :query_name, class: "form-control" %>
+      <% if !user_signed_in? %>
+        <%= form.label :query_text,"Your query", class: "form-label" %>
+      <% end %>
+      <%= form.text_area :query_text, class: "form-control", placeholder: "Please write us a question", data: { target: 'query-product.input' } %>
     </div>
 
-    <div class="mb-3">
-      <%= form.label :query_email, class: "form-label" %>
-      <%= form.text_field :query_email, class: "form-control" %>
+    <div class="actions mt-5 d-flex justify-content-center">
+      <%= form.button 'Submit Query', class: "btn btn-primary ", data: { disable_with: "<span class='spinner-border spinner-border-sm' role='status' aria-hidden='true'></span> Sending",action: "click->query-product#click" } %>
     </div>
   <% end %>
-  <div class="mb-3">
-    <% if !user_signed_in? %>
-      <%= form.label :query_text,"Your query", class: "form-label" %>
-    <% end %>
-    <%= form.text_area :query_text, class: "form-control", placeholder: "Please write us a question", autofocus: true %>
-  </div>
-
-  <div class="actions mt-5 d-flex justify-content-center">
-    <%= form.submit 'Submit Query', class: "btn btn-primary ", data: { disable_with: "Wait..." } %>
-  </div>
-<% end %>
+</div>
