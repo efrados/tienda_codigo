@@ -40,14 +40,10 @@
 
 ## UI
 
-
 ## Image
 - install Active storage
 - install resizing images tools
 
-
-###### User
-- send mail confirmation
 
 ## Models
 
