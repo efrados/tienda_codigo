@@ -11,6 +11,10 @@ u = User.new(email: 'efrados@gmail.com', first_name: 'Efrain', last_name: 'Arrec
 u.skip_confirmation_notification!
 u.save
 u.confirm
+u = AdminUser.new(email: 'earreche@gmail.com', first_name: 'Efrain', last_name: 'Arreche', password: 'asdasd')
+u.skip_confirmation_notification!
+u.save
+u.confirm
 (1..20).each do |i|
   Product.create(product_name: "product name #{i}",
                  product_description: "product small description #{i}",

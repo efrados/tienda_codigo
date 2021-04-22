@@ -8,20 +8,20 @@ class UserDashboard < Administrate::BaseDashboard
   # which determines how the attribute is displayed
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
-    id: Field::Number,
+    id: Field::Number.with_options(searchable: false),
     email: Field::String,
-    encrypted_password: Field::String,
-    reset_password_token: Field::String,
-    reset_password_sent_at: Field::DateTime,
-    remember_created_at: Field::DateTime,
-    created_at: Field::DateTime,
-    updated_at: Field::DateTime,
+    password: Field::String.with_options(searchable: false),
+    reset_password_token: Field::String.with_options(searchable: false),
+    reset_password_sent_at: Field::DateTime.with_options(searchable: false),
+    remember_created_at: Field::DateTime.with_options(searchable: false),
+    created_at: Field::DateTime.with_options(searchable: false),
+    updated_at: Field::DateTime.with_options(searchable: false),
     first_name: Field::String,
     last_name: Field::String,
-    confirmation_token: Field::String,
-    unconfirmed_email: Field::String,
-    confirmed_at: Field::DateTime,
-    confirmation_sent_at: Field::DateTime,
+    confirmation_token: Field::String.with_options(searchable: false),
+    unconfirmed_email: Field::String.with_options(searchable: false),
+    confirmed_at: Field::DateTime.with_options(searchable: false),
+    confirmation_sent_at: Field::DateTime.with_options(searchable: false),
   }.freeze
 
   # COLLECTION_ATTRIBUTES
@@ -32,44 +32,33 @@ class UserDashboard < Administrate::BaseDashboard
   COLLECTION_ATTRIBUTES = %i[
     id
     email
-    encrypted_password
-    reset_password_token
+    first_name
+    last_name
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
   # an array of attributes that will be displayed on the model's show page.
-  SHOW_PAGE_ATTRIBUTES = %i[
-    id
-    email
-    encrypted_password
-    reset_password_token
-    reset_password_sent_at
-    remember_created_at
-    created_at
-    updated_at
-    first_name
-    last_name
-    confirmation_token
-    unconfirmed_email
-    confirmed_at
-    confirmation_sent_at
+  SHOW_PAGE_ATTRIBUTES = [
+    :id,
+    :email,
+    :created_at,
+    :updated_at,
+    :first_name,
+    :last_name,
+    :confirmation_token,
+    :unconfirmed_email,
+    :confirmed_at,
+    :confirmation_sent_at
   ].freeze
 
   # FORM_ATTRIBUTES
   # an array of attributes that will be displayed
   # on the model's form (`new` and `edit`) pages.
-  FORM_ATTRIBUTES = %i[
-    email
-    encrypted_password
-    reset_password_token
-    reset_password_sent_at
-    remember_created_at
-    first_name
-    last_name
-    confirmation_token
-    unconfirmed_email
-    confirmed_at
-    confirmation_sent_at
+  FORM_ATTRIBUTES = [
+    :email,
+    :password,
+    :first_name,
+    :last_name,
   ].freeze
 
   # COLLECTION_FILTERS
