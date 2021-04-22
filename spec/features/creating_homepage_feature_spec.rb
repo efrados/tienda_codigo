@@ -1,12 +1,12 @@
-require "rails_helper" 
+# frozen_string_literal: true
 
-RSpec.feature "Listing HomePage" do
+require 'rails_helper'
 
-  scenario "with user not singed in" do
-    visit "/"
+RSpec.feature 'Listing HomePage' do
+  scenario 'with user not singed in' do
+    visit '/'
 
-    expect(page).to have_content('Welcome!') 
+    expect(page).to have_content('Welcome!')
     expect(page).to have_link('Home')
   end
-
 end

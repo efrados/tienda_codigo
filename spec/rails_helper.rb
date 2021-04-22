@@ -1,9 +1,11 @@
+# frozen_string_literal: true
+
+include Warden::Test::Helpers
 require 'spec_helper'
 ENV['RAILS_ENV'] ||= 'test'
 require File.expand_path('../config/environment', __dir__)
-abort("The Rails environment is running in production mode!") if Rails.env.production?
+abort('The Rails environment is running in production mode!') if Rails.env.production?
 require 'rspec/rails'
-include Warden::Test::Helpers
 
 begin
   ActiveRecord::Migration.maintain_test_schema!
@@ -19,12 +21,11 @@ RSpec.configure do |config|
   config.infer_spec_type_from_file_location!
   config.filter_rails_from_backtrace!
   config.backtrace_exclusion_patterns = [
-    /\/lib\d*\/ruby\//,
-    /bin\//,
+    %r{/lib\d*/ruby/},
+    %r{bin/},
     /gems/,
-    /org\/jruby\//,
-    /spec\/spec_helper\.rb/,
-    /lib\/rspec\/(core|expectations|matchers|mocks)/
+    %r{org/jruby/},
+    %r{spec/spec_helper\.rb},
+    %r{lib/rspec/(core|expectations|matchers|mocks)}
   ]
 end
-
