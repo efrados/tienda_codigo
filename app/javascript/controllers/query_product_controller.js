@@ -13,7 +13,6 @@ export default class extends Controller {
 
   showError(event) {
     const [data, status, xhr] = event.detail;
-
     this.errorsTarget.innerHTML = xhr.response;
 
   }
