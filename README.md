@@ -6,7 +6,7 @@
 - Guards
 
 ###### Mails - Sendgrid
-- Working in development for devise
+- Working in development for devise (Confirm and forgot password)
 - Automatic mail when sent a query
 
 ###### UI
