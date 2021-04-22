@@ -14,8 +14,8 @@ RSpec.feature "Signing up Users" do
 
     click_button "Sign up"
    
-    expect(page).to have_content("You have signed up successfully.")
-    expect(page).to have_content("john@example.com")
+    expect(Devise.mailer.deliveries.count).to eq 1
+    expect(page).to have_content("A message with a confirmation link has been sent")
   end
 
   scenario "with invalid credentials" do

@@ -5,7 +5,10 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-User.create(email: "efrados@gmail.com", first_name: "Efrain", last_name: "Arreche", password: "asdasd")
+u = User.new(email: "efrados@gmail.com", first_name: "Efrain", last_name: "Arreche", password: "asdasd")
+u.skip_confirmation_notification!
+u.create
+u.save
 (1..20).each do |i|
   Product.create(product_name: "product name #{i}",
                   product_description: "product small description #{i}",

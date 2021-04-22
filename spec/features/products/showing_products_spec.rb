@@ -3,7 +3,10 @@ require "rails_helper"
 RSpec.feature "Showing product" do
 
   before do
-    @john = User.create!(email: "john@example.com", password: "password", first_name: "john", last_name: "doe")
+    @john = User.new(email: "john@example.com", password: "password", first_name: "john", last_name: "doe")
+    @john.skip_confirmation_notification!
+    @john.save
+    @john.confirm
     login_as(@john)
     @p1 = Product.create(product_name: "Product name 1",
                         product_description: "product description 1",

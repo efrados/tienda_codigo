@@ -3,7 +3,10 @@ require "rails_helper"
 RSpec.feature "Signing Out Users" do
 
   before do
-    @john = User.create!(email: "john@example.com", password: "password", first_name: "john", last_name: "doe")
+    @john = User.new(email: "john@example.com", password: "password", first_name: "john", last_name: "doe")
+    @john.skip_confirmation_notification!
+    @john.save
+    @john.confirm
     login_as(@john)
   end
 
