@@ -8,7 +8,11 @@
         <div class="col col-lg-4 col-md-6 rounded-3">
           <div class="card bg-white product-card">
             <div class="bg-white d-flex justify-content-center" >
-              <img src="https://www.w3schools.com/css/img_lights.jpg" class="d-block w-100">
+              <% if product.image.attached? %>
+                <%= image_tag product.display_image, class: 'd-block w-100' %>
+              <% else %>
+                <img src="https://www.w3schools.com/css/img_lights.jpg" class="d-block w-100">
+              <% end %>
             </div>
             <div class="card-body pb-3">
               <h5 class="card-title"><%= product.product_name.capitalize %></h5>

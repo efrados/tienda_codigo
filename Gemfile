@@ -13,6 +13,9 @@ gem 'rails', '~> 6.1.0'
 gem 'rubocop', require: false
 gem 'rubocop-rails', require: false
 gem 'rubocop-rspec', require: false
+gem 'image_processing'
+gem 'mini_magick'
+gem 'active_storage_validations'
 
 gem 'sass-rails', '>= 6'
 gem 'turbolinks', '~> 5'
