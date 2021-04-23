@@ -1,8 +1,10 @@
 # frozen_string_literal: true
 
 class StaticPagesController < ApplicationController
+  include Pagy::Backend
+
   def index
-    @products = Product.all
+    @pagy, @products = pagy(Product.all.order(updated_at: :desc), items: 10)
   end
 
   def about; end

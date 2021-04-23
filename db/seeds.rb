@@ -11,7 +11,7 @@ u = User.new(email: 'efrados@gmail.com', first_name: 'Efrain', last_name: 'Arrec
 u.skip_confirmation_notification!
 u.save
 u.confirm
-u = AdminUser.new(email: 'earreche@gmail.com', first_name: 'Efrain', last_name: 'Arreche', password: 'asdasd')
+u = AdminUser.new(email: 'earrechecds@gmail.com', first_name: 'Efrain', last_name: 'Arreche', password: 'asdasd')
 u.skip_confirmation_notification!
 u.save
 u.confirm

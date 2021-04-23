@@ -22,6 +22,7 @@ gem 'active_storage_validations'
 gem 'administrate'
 gem 'administrate-field-active_storage'
 gem 'bourbon'
+gem 'pagy'
 
 gem 'sass-rails', '>= 6'
 gem 'turbolinks', '~> 5'
