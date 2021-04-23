@@ -11,3 +11,40 @@
     list-style: none;
   }
 }
+
+.dot {
+  height: 1.3em;
+  width: 1.3em;
+  padding: 3px;
+  border-radius: 50%;
+  display: inline-block;
+  &:hover{
+    transition: .2s;
+  }
+}
+
+.dot-rmv {
+  background-color: rgba(3, 169, 244, 0.7);
+  &:hover{
+    background-color: rgba(30, 69, 244, 0.7) ;
+  }
+}
+
+.dot-add {
+  background-color: #bbb;
+  &:hover{
+    background-color: rgba(244, 69, 244, 0.7) ;
+  }
+}
+
+.btn-heart {
+  &:hover{
+    text-decoration: none; 
+    decoration: none;
+    background-color: transparent ;
+  }
+  &:visited{
+    text-decoration: none;
+    decoration: none;
+  }
+}
