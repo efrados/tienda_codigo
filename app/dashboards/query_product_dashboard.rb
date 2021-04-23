@@ -26,9 +26,10 @@ class QueryProductDashboard < Administrate::BaseDashboard
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = %i[
     user
+    query_name
+    query_email
     product
     query_text
-    answer_text
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES

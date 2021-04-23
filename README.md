@@ -32,6 +32,8 @@
 ## TO DO's
 
 ## Testing
+- Admin only test for administrate
+- CRUD tests for products
 - Install Factories
 
 ## Security

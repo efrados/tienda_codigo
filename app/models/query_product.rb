@@ -7,12 +7,11 @@ class QueryProduct < ApplicationRecord
   validates :query_name, presence: true, length: { in: 3..20 }, if: -> { user.nil? }
   validates :query_email, presence: true, length: { in: 6..20 },
                           format: { with: Devise.email_regexp }, if: -> { user.nil? }
+  before_save :add_user_data, unless: -> { user.nil? }
 
-  def full_name
-    user ? user.full_name : query_name
-  end
-
-  def email
-    user ? user.email : query_email
-  end
+  private
+    def add_user_data
+      self.query_name = user.full_name
+      self.query_email = user.email
+    end
 end
