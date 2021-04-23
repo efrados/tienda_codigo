@@ -20,37 +20,33 @@
 ###### Login/Logout Users
 - Devise
 
+###### Backoffice
+- Administrate
+
 ###### Model/User
 - email, password, first_name, last_name
 
+###### Model/AdminUser
+- Model/user + type
+
 ###### Model/ Product
-- product_name product_description product_price:decimal product_text:text fav_counter:integer query_counter:integer
+- product_name product_description product_price:decimal product_text:text fav_counter:integer query_counter:integer image:active_storage
 
 ###### Model/ QueryProduct
 - user:references(optional) product:references query_text:text query_name:string query_email:string state:string
+
+###### Model/ Favorite
+- user:references product:references
 
 ## TO DO's
 
 ## Testing
 - Admin only test for administrate
+- Favorites
 - CRUD tests for products
 - Install Factories
 
-## Security
-- Administrator class
-- Administrate gem?
-
-## UI
-
-## Image
-- install Active storage
-- install resizing images tools
-
-
 ## Models
 
-###### Admin
-- add class
-
-###### Favorite
-- user:references product:references
+###### QueryProduct
+- answer_text:text

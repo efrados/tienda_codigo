@@ -8,10 +8,17 @@ Rails.application.routes.draw do
       resources :query_products
       resources :answered_queries, only: [:index]
       root to: "users#index"
-    end
+  end
+
   devise_for :users
   get 'static_pages/about'
   root to: 'static_pages#index'
+  resources :favorites, only: [] do
+    member do
+      get 'add'
+      get 'remove'
+    end
+  end
   resources :products, only: :show do
     resources :query_products
   end

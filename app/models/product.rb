@@ -2,7 +2,10 @@
 
 class Product < ApplicationRecord
   has_many :query_products
+  has_many :favorites, dependent: :destroy
+  has_many :users, through: :favorites
   has_one_attached :image
+
   validates :product_name, presence: true, length: { in: 5..30 }
   validates :product_description, presence: true, length: { in: 10..30 }
   validates :product_text, presence: true, length: { in: 10..200 }
