@@ -27,8 +27,8 @@ class QueryProductDashboard < Administrate::BaseDashboard
   COLLECTION_ATTRIBUTES = %i[
     user
     product
-    id
     query_text
+    answer_text
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
@@ -36,7 +36,6 @@ class QueryProductDashboard < Administrate::BaseDashboard
   SHOW_PAGE_ATTRIBUTES = %i[
     user
     product
-    id
     query_text
     query_name
     query_email

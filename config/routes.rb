@@ -6,7 +6,7 @@ Rails.application.routes.draw do
       resources :admin_users
       resources :products
       resources :query_products
-
+      resources :answered_queries, only: [:index]
       root to: "users#index"
     end
   devise_for :users

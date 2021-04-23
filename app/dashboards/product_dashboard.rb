@@ -10,11 +10,25 @@ class ProductDashboard < Administrate::BaseDashboard
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
     query_products: Field::HasMany.with_options(searchable: false),
-    image:  Field::ActiveStorage.with_options(searchable: false),
+    image:  Field::ActiveStorage.with_options(
+            searchable: false,
+            index_preview_size: [110, 110],
+            show_preview_size: [500, 500],
+    ),
     id: Field::Number.with_options(searchable: false),
     product_name: Field::String,
     product_description: Field::String,
-    product_price: Field::String.with_options(searchable: false),
+    product_price: Field::Number.with_options(
+      searchable: false,
+      prefix: "$ ",
+      decimals: 2,
+      format: { 
+          formatter: :number_to_delimited,
+          formatter_options: { 
+              delimiter: ',',
+          },
+      },
+    ),
     product_text: Field::Text,
     fav_counter: Field::Number.with_options(searchable: false),
     query_counter: Field::Number.with_options(searchable: false),
@@ -30,9 +44,9 @@ class ProductDashboard < Administrate::BaseDashboard
   COLLECTION_ATTRIBUTES = %i[
     query_products
     product_name
+    product_price
     product_description
     image
-    id
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
@@ -55,14 +69,11 @@ class ProductDashboard < Administrate::BaseDashboard
   # an array of attributes that will be displayed
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = %i[
-    query_products
     image
     product_name
     product_description
     product_price
     product_text
-    fav_counter
-    query_counter
   ].freeze
 
   # COLLECTION_FILTERS
