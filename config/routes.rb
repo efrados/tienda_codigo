@@ -12,6 +12,7 @@ Rails.application.routes.draw do
 
   devise_for :users
   get 'static_pages/about'
+  get 'favorites', to: 'products#favorites'
   root to: 'static_pages#index'
   resources :favorites, only: [] do
     member do
