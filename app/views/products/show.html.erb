@@ -7,9 +7,9 @@
     <% end %>
     <div class="card-img-overlay">
       <% if current_user && current_user.products.include?(@product) %>
-        <%= link_to bicon('bi-heart', class: "dot dot-rmv px-2"), remove_favorite_path(product_id: @product), class: "btn-heart", 'data-bs-toggle': 'tooltip', 'data-bs-placement': 'right', title: "Remove Favorite" %>
-      <% else %>
-        <%= link_to bicon('bi-heart-fill', class: "dot dot-add px-2"), add_favorite_path(product_id: @product), class: "btn-heart", 'data-bs-toggle': 'tooltip', 'data-bs-placement': 'right', title: "Add Favorite" %>
+        <%= link_to bicon('bi-heart', class: "dot dot-rmv", style: "color: blue;"), remove_favorite_path(product_id: @product), class: "btn-heart", 'data-bs-toggle': 'tooltip', 'data-bs-placement': 'right', title: "Remove Favorite" %>
+      <% elsif current_user %>
+        <%= link_to bicon('bi-heart-fill', class: "dot dot-add", style: "color: cornflowerblue;"), add_favorite_path(product_id: @product), class: "btn-heart", 'data-bs-toggle': 'tooltip', 'data-bs-placement': 'right', title: "Add Favorite" %>
       <% end %>
     </div>
   </div>

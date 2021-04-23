@@ -10,7 +10,7 @@ import "channels"
 import 'bootstrap-icons/font/bootstrap-icons.css'
 import 'bootstrap/js/src/collapse'
 import 'bootstrap/js/src/alert'
-import 'bootstrap/js/src/tooltip'
+import bootstrap_tooltip from 'bootstrap/js/src/tooltip'
 import 'bootstrap/js/src/dropdown'
 
 Rails.start()
@@ -19,6 +19,10 @@ ActiveStorage.start()
 import 'controllers'
 
 document.addEventListener('turbolinks:load', function() {
+  var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+  var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+    return new bootstrap_tooltip(tooltipTriggerEl)
+  })
   const cards = document.querySelectorAll(".product-card");
   cards.forEach(function(el) {
     el.addEventListener("mouseenter", function( event ) {

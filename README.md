@@ -50,3 +50,6 @@
 
 ###### QueryProduct
 - answer_text:text
+
+## Funcionalities
+- Searchbar

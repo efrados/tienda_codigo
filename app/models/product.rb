@@ -22,7 +22,13 @@ class Product < ApplicationRecord
     image.variant(gravity: "Center", resize: "430X287^", crop: '430X287+0+0').processed
   end
 
-  def display_image_mini
-    image.variant(gravity: "Center", resize: "230X287^", crop: '230X287+0+0').processed
+  scope :search_bar, ->(search){ where('((LOWER(product_name) LIKE :name ) OR (LOWER(product_description) LIKE :name))',
+ name: "%#{search.downcase}%") }
+  
+  def self.search(search, sort, direction)
+    search ||= {}
+    products = all
+    products = products.search_bar(search[:search_name]) if search[:search_name].present?
+    products.order("#{sort} #{direction}")
   end
 end
