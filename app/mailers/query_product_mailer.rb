@@ -8,7 +8,7 @@ class QueryProductMailer < ApplicationMailer
     mail(to: @query_product.query_email, subject: "We received a new query about #{@product.product_name}")
   end
 
-  def new_answer_email
+  def answer_email
     @query_product = params[:query_product]
     @product = params[:product]
     mail(to: @query_product.query_email, subject: "We received a new query about #{@product.product_name}")
