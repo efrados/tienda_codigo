@@ -13,6 +13,7 @@ class QueryProductDashboard < Administrate::BaseDashboard
     id: Field::Number,
     query_text: Field::Text,
     answer_text: Field::Text,
+    answer_text: Field::Text,
     query_name: Field::String,
     query_email: Field::String,
     state: Field::String,

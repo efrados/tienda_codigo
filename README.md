@@ -42,6 +42,7 @@
 
 ## Refactor
 - Favorite get link to form post and delete
+- favorite with stimulus
 - add favorite to index products
 
 ## Testing
@@ -53,5 +54,4 @@
 ## Funcionalities
 - see other's questions
 - (Back Office) statistics ()
-- Answer question(BackOffice) and send mail
 
