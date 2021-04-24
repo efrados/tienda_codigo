@@ -52,4 +52,5 @@
 - answer_text:text
 
 ## Funcionalities
-- Searchbar
+- see other questions
+- add admin button

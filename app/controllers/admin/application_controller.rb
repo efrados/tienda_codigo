@@ -9,7 +9,7 @@ module Admin
     before_action :authenticate_admin
 
     def authenticate_admin
-      unless current_user.try(:type) == 'AdminUser'
+      unless current_user.is_admin?
         flash[:alert] = "You are not authorized to access this page."
         redirect_to(root_path)
       end

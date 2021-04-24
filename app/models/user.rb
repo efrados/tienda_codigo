@@ -13,4 +13,8 @@ class User < ApplicationRecord
   def full_name
     "#{first_name} #{last_name}"
   end
+
+  def is_admin?
+    self.try(:type) == 'AdminUser'
+  end
 end
