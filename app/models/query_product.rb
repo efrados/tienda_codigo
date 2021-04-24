@@ -8,10 +8,19 @@ class QueryProduct < ApplicationRecord
   validates :query_email, presence: true, length: { in: 6..50 },
                           format: { with: Devise.email_regexp }, if: -> { user.nil? }
   before_save :add_user_data, unless: -> { user.nil? }
+  after_create :send_confirmation_query
+
+
+  scope :unanswered, ->(){ where(answer_text: nil) }
+  scope :by_registered_users, ->(){ where.not(user: nil) }
 
   private
     def add_user_data
       self.query_name = user.full_name
       self.query_email = user.email
+    end
+  
+    def send_confirmation_query
+      QueryProductMailer.with(query_product: self , product: product).new_query_email.deliver_later
     end
 end

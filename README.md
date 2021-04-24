@@ -33,12 +33,16 @@
 - product_name product_description product_price:decimal product_text:text fav_counter:integer query_counter:integer image:active_storage
 
 ###### Model/ QueryProduct
-- user:references(optional) product:references query_text:text query_name:string query_email:string state:string
+- user:references(optional) product:references query_text:text query_name:string query_email:string state:string answer_text:text
 
 ###### Model/ Favorite
 - user:references product:references
 
 ## TO DO's
+
+## Refactor
+- Favorite get link to form post and delete
+- add favorite to index products
 
 ## Testing
 - Admin only test for administrate
@@ -46,11 +50,8 @@
 - CRUD tests for products
 - Install Factories
 
-## Models
-
-###### QueryProduct
-- answer_text:text
-
 ## Funcionalities
-- see other questions
-- add admin button
+- see other's questions
+- (Back Office) statistics ()
+- Answer question(BackOffice) and send mail
+

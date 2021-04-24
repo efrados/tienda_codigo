@@ -8,4 +8,5 @@ module ApplicationHelper
     options.merge! style: "font-size: 3rem; #{options[:style]}"
     content_tag :span, nil, options
   end
+
 end

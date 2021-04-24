@@ -6,7 +6,6 @@ class QueryProductsController < ApplicationController
     @query_product = @product.query_products.build(query_product_params)
     @query_product.user = current_user
     if @query_product.save
-      QueryProductMailer.with(query_product: @query_product, product: @product).new_query_email.deliver_later
       render 'success', layout: false
     else
       render partial: 'form', layout: false

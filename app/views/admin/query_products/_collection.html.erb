@@ -18,6 +18,7 @@ to display a collection of resources in an HTML table.
 [1]: http://www.rubydoc.info/gems/administrate/Administrate/Page/Collection
 %>
 
+
 <table aria-labelledby="<%= table_title %>">
   <thead>
     <tr>
@@ -28,9 +29,10 @@ to display a collection of resources in an HTML table.
         scope="col"
         role="columnheader"
         aria-sort="<%= sort_order(collection_presenter.ordered_html_class(attr_name)) %>">
-        <%= link_to(sanitized_order_params(page, collection_field_name).merge(
-          collection_presenter.order_params_for(attr_name, key: collection_field_name)
+        
+        <%= link_to(sanitized_order_params(page, collection_field_name).merge(collection_presenter.order_params_for(attr_name, key: collection_field_name).merge({query_product: {custom_filter: @custom_filter_param}}){|key, v1, v2| v1.merge(v2) }
         )) do %>
+
         <%= t(
           "helpers.label.#{collection_presenter.resource_name}.#{attr_name}",
           default: resource_class.human_attribute_name(attr_name),

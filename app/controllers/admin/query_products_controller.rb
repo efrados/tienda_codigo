@@ -1,12 +1,31 @@
 module Admin
   class QueryProductsController < Admin::ApplicationController
-    # Overwrite any of the RESTful controller actions to implement custom behavior
-    # For example, you may want to send an email after a foo is updated.
-    #
-    # def update
-    #   super
-    #   send_foo_updated_email(requested_resource)
-    # end
+
+    def default_sorting_attribute
+      :created_at
+    end
+
+    def default_sorting_direction
+      :desc
+    end
+
+    def scoped_resource
+      search = params[resource_class.name.underscore.to_sym]
+      if search && search[:custom_filter].present?
+        case search[:custom_filter].to_i
+          when 1
+            resource_class.by_registered_users
+          when 2
+            resource_class.unanswered
+          when 3
+            resource_class.unanswered.by_registered_users
+          else
+            resource_class
+        end
+     else
+       resource_class
+     end
+    end
 
     # Override this method to specify custom lookup behavior.
     # This will be used to set the resource for the `show`, `edit`, and `update`
@@ -21,13 +40,6 @@ module Admin
     # Override this if you have certain roles that require a subset
     # this will be used to set the records shown on the `index` action.
     #
-    # def scoped_resource
-    #   if current_user.super_admin?
-    #     resource_class
-    #   else
-    #     resource_class.with_less_stuff
-    #   end
-    # end
 
     # Override `resource_params` if you want to transform the submitted
     # data before it's persisted. For example, the following would turn all

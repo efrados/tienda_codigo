@@ -30,6 +30,7 @@ It renders the `_table` partial to display details about the resources.
 <header class="main-content__header" role="banner">
   <h1 class="main-content__page-title" id="page-title">
     <%= content_for(:title) %>
+
   </h1>
 
   <% if show_search_bar %>
@@ -39,7 +40,10 @@ It renders the `_table` partial to display details about the resources.
       resource_name: display_resource_name(page.resource_name)
     ) %>
   <% end %>
-
+<!-- params {"query_product"=>{"direction"=>"asc", "order"=>"product"}, "controller"=>"admin/query_products", "action"=>"index"} -->
+<!-- params "query_products"=>{"direction"=>"desc", "order"=>"query_name"}, "controller"=>"admin/query_products", "action"=>"index"} query_products -->
+<!-- query_products?query_product%5Bdirection%5D=desc&query_product%5Border%5D=query_name -->
+<!-- query_products?query_product%5B%5D%5Bdirection%5D=desc&query_product%5B%5D%5Border%5D=query_name -->
   <div>
     <%= link_to(
       t(
@@ -50,8 +54,24 @@ It renders the `_table` partial to display details about the resources.
       class: "button",
     ) if valid_action?(:new) && show_action?(:new, new_resource) %>
   </div>
-</header>
 
+</header>
+<div style= "margin-left: 30px">
+  <% @custom_filter_param = params[:query_product][:custom_filter] if params[:query_product] %>
+  <%= form_for :query_product, url: '#', method: :get, html: { class: "g-1" } do |f| %>
+     <div class="field-unit field-unit--belongs-to field-unit--optional">
+      <%= f.select(:custom_filter,
+                   [ ["No filter", 0], ["Only Registered Users Questions",1], ["Only Unanswered Questions",2], ["Only Unanswered Registered Users Questions",3]],
+                   {selected: @custom_filter_param, prompt: "Select filter"}, {class: 'selectized', style: 'width:30%'}) %>
+      <button class="button button--alt" type="submit" style="margin: 3px">
+        Filter
+      </button>
+      </div>
+
+    <div class="col-auto">
+    </div>
+  <% end %>
+</div>
 <section class="main-content__body main-content__body--flush">
   <%= render(
     "collection",

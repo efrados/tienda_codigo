@@ -12,6 +12,7 @@ class QueryProductDashboard < Administrate::BaseDashboard
     product: Field::BelongsTo,
     id: Field::Number,
     query_text: Field::Text,
+    answer_text: Field::Text,
     query_name: Field::String,
     query_email: Field::String,
     state: Field::String,
@@ -26,10 +27,11 @@ class QueryProductDashboard < Administrate::BaseDashboard
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = %i[
     user
+    product
     query_name
     query_email
-    product
     query_text
+    answer_text
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
@@ -38,6 +40,7 @@ class QueryProductDashboard < Administrate::BaseDashboard
     user
     product
     query_text
+    answer_text
     query_name
     query_email
     state
@@ -52,6 +55,7 @@ class QueryProductDashboard < Administrate::BaseDashboard
     user
     product
     query_text
+    answer_text
     query_name
     query_email
     state
@@ -72,7 +76,7 @@ class QueryProductDashboard < Administrate::BaseDashboard
   # Overwrite this method to customize how query products are displayed
   # across all pages of the admin dashboard.
   #
-  # def display_resource(query_product)
-  #   "QueryProduct ##{query_product.id}"
-  # end
+  def display_resource(query_product)
+     "Qp##{query_product.id}"
+   end
 end
