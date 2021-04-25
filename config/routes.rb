@@ -14,8 +14,7 @@ Rails.application.routes.draw do
       end
       root to: "users#index"
   end
-
-  devise_for :users
+  devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
   get 'static_pages/about'
   get 'favorites', to: 'products#favorites'
   post '/', to: 'products#index'

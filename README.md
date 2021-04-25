@@ -52,6 +52,7 @@
 - Install Factories
 
 ## Funcionalities
+- facebook login
 - see other's questions
 - (Back Office) statistics ()
 

@@ -6,10 +6,14 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '2.7.3'
 
 gem 'bootsnap', '>= 1.4.4', require: false
-gem 'devise'
 gem 'jbuilder', '~> 2.7'
 gem 'puma', '~> 5.0'
 gem 'rails', '~> 6.1.0'
+
+gem 'devise', github: 'heartcombo/devise', branch: 'ca-omniauth-2'
+gem 'omniauth-rails_csrf_protection'
+gem 'omniauth-facebook'
+gem 'omniauth-google-oauth2'
 
 gem 'rubocop', require: false
 gem 'rubocop-rails', require: false

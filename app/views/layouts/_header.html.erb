@@ -21,7 +21,7 @@
           <% end %>
         </li>
       </ul>
-      
+
       <div class="d-flex">
         <ul class="navbar-nav">
           <% if user_signed_in? %>
@@ -37,7 +37,7 @@
               <%= link_to destroy_user_session_path,
                          method: :delete, class: "nav-link" do %>
               <span class="text-white">
-                <%= current_user.email.truncate(25  ) %>(Sign out)
+                <%= current_user.email.truncate(25) %>(Sign out)
               </span>
               <% end %>
             </li>
