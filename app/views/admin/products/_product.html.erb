@@ -1,0 +1,36 @@
+<tr class="js-table-row" tabindex="0" role="link" data-url="<%= admin_product_path(product.id) %>">
+  <td class="cell-data cell-data--string" tabindex="-1" class="action-show">
+    <%= link_to admin_product_path(product.id) do %>
+      <%= product.product_name %>
+    <% end %>
+  </td>
+  <td class="cell-data cell-data--string" tabindex="-1" class="action-show">
+    <%= link_to admin_product_path(product.id) do %>
+      <%= product.product_description %>
+    <% end %>  
+  </td>
+  <td class="cell-data cell-data--number" tabindex="-1" class="action-show">
+    <%= link_to admin_product_path(product.id) do %>
+      <%= product.product_price %>
+    <% end %>  
+  </td>
+  <td class="cell-data cell-data--active-storage" tabindex="-1" class="action-show">
+    <%= link_to admin_product_path(product.id) do %>
+      <% if product.image.attached? %>
+        <%= image_tag product.display_image_mini, style: "max-height: unset !important;" %>
+      <% else %>
+        no-img
+      <% end %>
+    <% end %>
+  </td>
+  <td class="cell-data cell-data--number" tabindex="-1" class="action-show">
+    <%= link_to admin_product_path(product.id) do %>
+      <%= product.fav_counter %>
+    <% end %>
+  </td>
+  <td class="cell-data cell-data--number" tabindex="-1" class="action-show">
+    <%= link_to admin_product_path(product.id) do %>
+      <%= product.query_counter %>
+    <% end %>
+  </td>
+</tr>

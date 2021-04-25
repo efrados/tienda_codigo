@@ -6,7 +6,12 @@ Rails.application.routes.draw do
       resources :admin_users
       resources :products
       resources :query_products
-      resources :unanswered_queries, only: [:index]
+      resources :statistics, only: [:index] do
+        collection do
+          get 'top_ten_fav'
+          get 'top_ten_query'
+        end
+      end
       root to: "users#index"
   end
 

@@ -52,17 +52,17 @@ class ProductDashboard < Administrate::BaseDashboard
   # SHOW_PAGE_ATTRIBUTES
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = %i[
-    query_products
     image
     id
     product_name
     product_description
     product_price
     product_text
-    fav_counter
-    query_counter
     created_at
     updated_at
+    fav_counter
+    query_counter
+    query_products
   ].freeze
 
   # FORM_ATTRIBUTES

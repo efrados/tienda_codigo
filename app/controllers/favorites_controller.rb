@@ -4,17 +4,13 @@ class FavoritesController < ApplicationController
 
   def add
     @product = Product.find(params[:product_id])
-    @product.fav_counter = @product.fav_counter + 1
-    @product.save
-    current_user.products << @product
+    @product.add_user_favorite(current_user)
     redirect_to @product
   end
 
   def remove
     @product = Product.find(params[:product_id])
-    @product.fav_counter = @product.fav_counter - 1
-    @product.save
-    current_user.products.delete(@product)
+    @product.remove_user_favorite(current_user)
     redirect_to @product
   end
 end
