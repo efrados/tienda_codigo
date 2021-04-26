@@ -17,16 +17,28 @@ button, .dot{
   border: 0;
 }
 
+
 .dot {
+  z-index: 2;
+  position: relative;
   height: 1.4em;
   width: 1.4em;
   padding-top: 2px;
-
   border-radius: 50%;
   display: inline-block;
   &:hover{
     transition: .2s;
   }
+}
+
+.btn-sm .dot{
+  font-size: clamp(1.5rem, calc(50% + 2vw), 2rem);
+  
+}
+
+.btn-lg .dot{
+  font-size: calc(150% + 2vw);
+  min-font-size: 1.5rem;
 }
 
 .dot-rmv {

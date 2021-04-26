@@ -28,6 +28,7 @@ document.addEventListener('turbo:load', function() {
       event.target.classList.add('shadow');
       event.target.style.border = "1px solid black"
       event.target.querySelector(".product-description").classList.toggle('show');
+      event.target.querySelector(".favorites").classList.toggle('show');
       setTimeout(function() {
         event.target.style.border = ""
       }, 800);
@@ -35,6 +36,7 @@ document.addEventListener('turbo:load', function() {
     el.addEventListener("mouseleave", function( event ) {
       event.target.classList.remove('shadow');
       event.target.querySelector(".product-description").classList.remove('show');
+      event.target.querySelector(".favorites").classList.remove('show');
     }, false);
   });
 });

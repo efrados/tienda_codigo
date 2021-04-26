@@ -5,14 +5,8 @@
     <% else %>
       <img src="https://www.w3schools.com/css/img_lights.jpg" class="d-block w-100">
     <% end %>
-    <div class="card-img-overlay">
-      <%= turbo_frame_tag :favorite do %>
-        <% if current_user && current_user.products.include?(@product) %>
-          <%= render 'favorites/remove' %>
-        <% elsif current_user %>
-          <%= render 'favorites/add' %>
-        <% end %>
-      <% end %>
+    <div class="card-img-overlay btn-lg">
+      <%= render 'favorites/form', product: @product %>
     </div>
   </div>
 

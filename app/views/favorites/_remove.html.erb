@@ -1,8 +1,8 @@
-<%= turbo_frame_tag dom_id(@product) do %>
-  <%= form_with(model: [@product, current_user.favorites.find_by(product_id: @product.id)],
+<%= turbo_frame_tag dom_id(product) do %>
+  <%= form_with(model: [product, current_user.favorites.find_by(product_id: product.id)],
           html: { method: :delete }) do |f| %>
-    <%= f.button bicon('bi-heart', class: "dot dot-rmv", style: "color: blue;"),
-        class: "btn-heart", 'data-bs-toggle': 'tooltip', 'data-bs-placement': 'right',
-        title: "Remove Favorite" %>
+    <%= f.button bicon('bi-heart', class: "dot dot-rmv", style: 'color: blue'),
+        class: 'btn-heart', 'data-bs-toggle': 'tooltip', 'data-bs-placement': 'right',
+        title: 'Remove Favorite' %>
   <% end %>
 <% end %>
