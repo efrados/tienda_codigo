@@ -1,7 +1,7 @@
 # app/controllers/users/omniauth_callbacks_controller.rb
 
 class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
-  skip_before_action :verify_authenticity_token, only: :facebook
+  skip_before_action :verify_authenticity_token, only: [:facebook, :google_oauth2]
 
   def facebook
     @user = User.from_omniauth(request.env['omniauth.auth'])
