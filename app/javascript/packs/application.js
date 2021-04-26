@@ -4,7 +4,7 @@
 // that code so it'll be compiled.
 
 import Rails from "@rails/ujs"
-import Turbolinks from "turbolinks"
+import "@hotwired/turbo-rails"
 import * as ActiveStorage from "@rails/activestorage"
 import "channels"
 import 'bootstrap-icons/font/bootstrap-icons.css'
@@ -14,11 +14,10 @@ import bootstrap_tooltip from 'bootstrap/js/src/tooltip'
 import 'bootstrap/js/src/dropdown'
 
 Rails.start()
-Turbolinks.start()
 ActiveStorage.start()
 import 'controllers'
 
-document.addEventListener('turbolinks:load', function() {
+document.addEventListener('turbo:load', function() {
   var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
   var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
     return new bootstrap_tooltip(tooltipTriggerEl)
@@ -39,3 +38,4 @@ document.addEventListener('turbolinks:load', function() {
     }, false);
   });
 });
+import "controllers"

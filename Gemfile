@@ -29,7 +29,7 @@ gem 'bourbon'
 gem 'pagy'
 
 gem 'sass-rails', '>= 6'
-gem 'turbolinks', '~> 5'
+
 gem 'webpacker', '~> 5.0'
 
 group :development, :test do
@@ -56,3 +56,5 @@ end
 group :production do
   gem 'pg', '~> 1.1'
 end
+
+gem "hotwire-rails", "~> 0.1.3"

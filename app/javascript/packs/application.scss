@@ -11,12 +11,16 @@
     list-style: none;
   }
 }
+button, .dot{
+  background-color: transparent;
+  border: 0;
+}
 
 .dot {
   height: 1.4em;
   width: 1.4em;
   padding-top: 2px;
-  padding-left: 0.2em;
+
   border-radius: 50%;
   display: inline-block;
   &:hover{

@@ -19,12 +19,7 @@ Rails.application.routes.draw do
   get 'favorites', to: 'products#favorites'
   post '/', to: 'products#index'
   root to: 'products#index'
-  resources :favorites, only: [] do
-    member do
-      get 'add'
-      get 'remove'
-    end
-  end
+  resources :favorites, only: [:create, :destroy]
   resources :products, only: :show do
     resources :query_products
   end

@@ -7,9 +7,19 @@
     <% end %>
     <div class="card-img-overlay">
       <% if current_user && current_user.products.include?(@product) %>
-        <%= link_to bicon('bi-heart', class: "dot dot-rmv", style: "color: blue;"), remove_favorite_path(product_id: @product), class: "btn-heart", 'data-bs-toggle': 'tooltip', 'data-bs-placement': 'right', title: "Remove Favorite" %>
+        <%= form_with(model: current_user.favorites.find_by(product_id: @product.id),
+                html: { method: :delete }) do |f| %>
+          <%= f.button bicon('bi-heart', class: "dot dot-rmv", style: "color: blue;"),
+              class: "btn-heart", 'data-bs-toggle': 'tooltip', 'data-bs-placement': 'right',
+              title: "Remove Favorite" %>
+        <% end %>
       <% elsif current_user %>
-        <%= link_to bicon('bi-heart-fill', class: "dot dot-add", style: "color: cornflowerblue;"), add_favorite_path(product_id: @product), class: "btn-heart", 'data-bs-toggle': 'tooltip', 'data-bs-placement': 'right', title: "Add Favorite" %>
+        <%= form_with(model: current_user.favorites.build) do |f| %>
+          <%= hidden_field_tag :product_id, @product.id %>
+          <%= button_tag bicon('bi-heart-fill', class: "dot dot-add", style: "color: cornflowerblue;"),
+              class: "btn-heart", 'data-bs-toggle': 'tooltip', 'data-bs-placement': 'right',
+              title: "Add Favorite" %>
+        <% end %>
       <% end %>
     </div>
   </div>
@@ -32,11 +42,15 @@
 <div class="row mt-3">
   <div class="col-md-8 p-3">
     <h6>Most Helpful Questions about this product </h6>
-    <ul class="list-group">
-      <%= render @queries %>
-    </ul>
-    <% if @queries.count > 5 %>
-      <%== pagy_bootstrap_nav(@pagy) %>
+    <% if @queries %>
+      <ul class="list-group">
+        <%= render @queries %>
+      </ul>
+      <% if @queries.count > 5 %>
+        <%== pagy_bootstrap_nav(@pagy) %>
+      <% end %>
+    <% else %>
+      <h6>No questions for this product, be the first!</h6>
     <% end %>
   </div>
 </div>
