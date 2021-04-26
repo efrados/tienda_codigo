@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class QueryProductsController < ApplicationController
+  include Pagy::Backend
+
   def create
     @product = Product.find(params[:product_id])
     @query_product = @product.query_products.build(query_product_params)

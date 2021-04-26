@@ -47,12 +47,12 @@
 
 ## Testing
 - Admin only test for administrate
-- Favorites
 - CRUD tests for products
+- Favorites
+- query_products test email
 - Install Factories
 
 ## Funcionalities
-- facebook login
-- see other's questions
-- (Back Office) statistics ()
+<span class="badge bg-primary rounded-pill">14</span>
+add this to query_products.html.erb and implement upvote downvote questions
 

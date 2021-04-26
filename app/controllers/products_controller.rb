@@ -5,6 +5,7 @@ class ProductsController < ApplicationController
 
   def show
     @product = Product.find(params[:id])
+    @pagy, @queries = pagy(@product.query_products, items: 5)
     @query_product = @product.query_products.build
   end
 

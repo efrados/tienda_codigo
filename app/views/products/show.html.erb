@@ -30,6 +30,17 @@
   </div>
 </div>
 <div class="row mt-3">
+  <div class="col-md-8 p-3">
+    <h6>Most Helpful Questions about this product </h6>
+    <ul class="list-group">
+      <%= render @queries %>
+    </ul>
+    <% if @queries.count > 5 %>
+      <%== pagy_bootstrap_nav(@pagy) %>
+    <% end %>
+  </div>
+</div>
+<div class="row mt-3">
   <div class="col-md-12 p-1">
     <h6 class="mt-0">Ask about this product</h6>
     <div data-controller= "query-product">
