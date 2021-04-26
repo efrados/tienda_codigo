@@ -25,8 +25,8 @@ class QueryProduct < ApplicationRecord
     end
   
     def send_confirmation_query
-      QueryProductMailer.with(query_product: self , product: product).new_query_email.deliver_later
-      product.query_counter = query_counter + 1
+      #QueryProductMailer.with(query_product: self , product: product).new_query_email.deliver_later
+      product.query_counter = product.query_counter + 1
       product.save
     end
 

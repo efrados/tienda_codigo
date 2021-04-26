@@ -17,7 +17,7 @@ module Admin
 
     def top_ten_query
       @products= Product.order(query_counter: :desc).first(10)
-      @title = "Top Ten Favorite Products"
+      @title = "Top Ten Queried Products"
       render 'top_index'
     end
 

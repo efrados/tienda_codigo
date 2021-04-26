@@ -6,19 +6,11 @@
       <img src="https://www.w3schools.com/css/img_lights.jpg" class="d-block w-100">
     <% end %>
     <div class="card-img-overlay">
-      <% if current_user && current_user.products.include?(@product) %>
-        <%= form_with(model: current_user.favorites.find_by(product_id: @product.id),
-                html: { method: :delete }) do |f| %>
-          <%= f.button bicon('bi-heart', class: "dot dot-rmv", style: "color: blue;"),
-              class: "btn-heart", 'data-bs-toggle': 'tooltip', 'data-bs-placement': 'right',
-              title: "Remove Favorite" %>
-        <% end %>
-      <% elsif current_user %>
-        <%= form_with(model: current_user.favorites.build) do |f| %>
-          <%= hidden_field_tag :product_id, @product.id %>
-          <%= button_tag bicon('bi-heart-fill', class: "dot dot-add", style: "color: cornflowerblue;"),
-              class: "btn-heart", 'data-bs-toggle': 'tooltip', 'data-bs-placement': 'right',
-              title: "Add Favorite" %>
+      <%= turbo_frame_tag :favorite do %>
+        <% if current_user && current_user.products.include?(@product) %>
+          <%= render 'favorites/remove' %>
+        <% elsif current_user %>
+          <%= render 'favorites/add' %>
         <% end %>
       <% end %>
     </div>
