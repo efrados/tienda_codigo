@@ -1,5 +1,5 @@
 <div data-query-product-target="errors">
-  <%= form_for([@product, @query_product], remote: true, html: { data: { action: "ajax:success->query-product#showError ajax:error->query-product#showError"} }) do |form| %>
+  <%= form_for([@product, @query_product], remote: true, html: { data: { action: 'ajax:success->query-product#showError ajax:error->query-product#showError'} }) do |form| %>
     <div data-query-product-target="spinner">
     </div>
     <%= render "shared/errors",  :target => @query_product %>
@@ -22,7 +22,7 @@
     </div>
 
     <div class="actions mt-5 d-flex justify-content-center">
-      <%= form.button 'Submit Query', class: "btn btn-primary ", data: { disable_with: "<span class='spinner-border spinner-border-sm' role='status' aria-hidden='true'></span> Sending",action: "click->query-product#click" } %>
+      <%= form.button 'Submit Query', class: "btn btn-primary ", data: { disable_with: '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Sending',action: 'click->query-product#click' } %>
     </div>
   <% end %>
 </div>

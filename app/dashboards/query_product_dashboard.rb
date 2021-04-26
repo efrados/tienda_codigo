@@ -72,7 +72,10 @@ class QueryProductDashboard < Administrate::BaseDashboard
   #   COLLECTION_FILTERS = {
   #     open: ->(resources) { resources.where(open: true) }
   #   }.freeze
-  COLLECTION_FILTERS = {}.freeze
+  COLLECTION_FILTERS = {
+    unanswered: ->(resources){ resources.where(answer_text: nil) }
+  
+  }.freeze
 
   # Overwrite this method to customize how query products are displayed
   # across all pages of the admin dashboard.

@@ -7,7 +7,7 @@
     <div class="collapse navbar-collapse" id="bdNavbar">
       <ul class="navbar-nav mx-auto mb-2 mb-lg-0 justify-content-center">
         <li class="pt-1 ms-3">
-          <%= form_for :search, url: self.send("root_path"), method: :get, html: { class: "row g-1" } do |f| %>
+          <%= form_for :search, url: self.send('root_path'), method: :get, html: { class: "row g-1" } do |f| %>
             <%= hidden_field_tag :sort, @sort %>
             <%= hidden_field_tag :direction, @direction %>
             <div class="col-auto">
@@ -27,15 +27,15 @@
           <% if user_signed_in? %>
             <li class="nav-item">
               <li class="nav-item">
-                <%= link_to ' Products', favorites_path, class:"nav-link active bi bi-heart" %>
+                <%= link_to ' Products', favorites_path, class:'nav-link active bi bi-heart' %>
               </li>
               <% if current_user.is_admin? %>
                 <li class="nav-item">
-                  <%= link_to 'Admin Panel', admin_root_path, class:"nav-link" %>
+                  <%= link_to 'Admin Panel', admin_root_path, class:'nav-link' %>
                 </li>
               <% end %>
               <%= link_to destroy_user_session_path,
-                         method: :delete, class: "nav-link" do %>
+                         method: :delete, class: 'nav-link' do %>
               <span class="text-white">
                 <%= current_user.email.truncate(25) %>(Sign out)
               </span>
@@ -43,10 +43,10 @@
             </li>
           <% else %>
             <li class="nav-item">
-              <%= link_to 'Sign up', new_user_registration_path, class:"nav-link" %>
+              <%= link_to 'Sign up', new_user_registration_path, class:'nav-link' %>
             </li>
             <li class="nav-item">
-              <%= link_to 'Sign in', new_user_session_path, class:"nav-link" %>
+              <%= link_to 'Sign in', new_user_session_path, class:'nav-link' %>
             </li>
           <% end %>
         </ul>

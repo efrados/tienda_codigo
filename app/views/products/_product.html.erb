@@ -16,7 +16,7 @@
       <h5 class="card-title"><%= product.product_name.capitalize %></h5>
       <div class="card-text">
         <%= number_to_currency product.product_price %>
-        <%= link_to '', product_path(product), class: "stretched-link" %>
+        <%= link_to '', product_path(product), class: 'stretched-link' %>
       </div>
       <p class="mb-0 mt-2 product-description collapse text-muted" >
         <%= product.product_description.capitalize %>
