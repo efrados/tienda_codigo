@@ -12,6 +12,7 @@ import 'bootstrap/js/src/collapse'
 import 'bootstrap/js/src/alert'
 import bootstrap_tooltip from 'bootstrap/js/src/tooltip'
 import 'bootstrap/js/src/dropdown'
+require.context('../images', true)
 
 Rails.start()
 ActiveStorage.start()

@@ -41,9 +41,6 @@
 ## TO DO's
 
 ## Refactor
-- Favorite get link to form post and delete
-- favorite with stimulus
-- add favorite to index products
 
 ## Testing
 - Admin only test for administrate
