@@ -22,13 +22,16 @@ import 'controllers'
 document.addEventListener('turbo:load', function() {
   var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
   var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+    tooltipTriggerEl.addEventListener("click", function( event ) {
+      var tooltip = bootstrap_tooltip.getInstance(tooltipTriggerEl);
+      tooltip.hide();
+    });
     return new bootstrap_tooltip(tooltipTriggerEl)
   })
 
   const collapser = document.querySelectorAll(".collapser");
   collapser.forEach(function(el) {
     el.addEventListener("click", function( event ) {
-      console.log(el.id);
       var id = el.id.replace("-answer", "");
       document.getElementById(id + "-answer").classList.toggle('show');
       document.getElementById(id).classList.toggle('show');

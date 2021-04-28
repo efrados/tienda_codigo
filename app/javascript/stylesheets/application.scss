@@ -48,6 +48,10 @@ button, .dot{
   }
 }
 
+.dot-container{
+  margin-top: 0.1rem !important
+}
+
 .dot-add {
   background-color: #bbb;
   &:hover{

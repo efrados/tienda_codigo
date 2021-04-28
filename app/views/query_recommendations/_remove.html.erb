@@ -1,8 +1,15 @@
 <%= turbo_frame_tag dom_id(query_product) do %>
-  <%= form_with(model: [query_product, current_user.query_recommendations.find_by(query_product_id: query_product.id)],
-          html: { method: :delete }) do |f| %>
-    <%= f.button bicon('bi-hand-thumbs-down -fill', class: 'dot dot-rmv', style: 'color: blue'),
-        class: 'btn-heart', 'data-bs-toggle': 'tooltip', 'data-bs-placement': 'right',
-        title: 'Remove Favorite' %>
-  <% end %>
+  <div class="row">
+    <div class= "col-5 dot-container">
+      <%= form_with(model: [query_product, current_user.query_recommendations.find_by(query_product_id: query_product.id)],
+              html: { method: :delete }) do |f| %>
+        <%= f.button bicon('bi-hand-thumbs-down -fill', class: 'dot dot-rmv', style: 'color: blue'),
+            class: 'btn-heart bs-tooltip', 'data-bs-toggle': 'tooltip', 'data-bs-placement': 'right',
+            title: 'Remove Favorite' %>
+      <% end %>
+    </div>
+    <div class= "col-5">
+      <%= render 'query_products/query_product_votes', query_product: query_product %>
+    </div>
+  </div>
 <% end %>
