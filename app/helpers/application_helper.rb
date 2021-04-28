@@ -5,8 +5,7 @@ module ApplicationHelper
 
   def bicon(icon, options = {})
     options.merge! class: "bi #{icon} #{options[:class]}"
-    options.merge! style: "#{options[:style]}"
+    options.merge! style: (options[:style]).to_s
     content_tag :span, nil, options
   end
-
 end

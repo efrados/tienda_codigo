@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class ProductsController < ApplicationController
+  load_and_authorize_resource
   include Pagy::Backend
 
   def show
@@ -22,19 +23,23 @@ class ProductsController < ApplicationController
 
   private
 
-    def sort_column
-      columns = Product.column_names
-      columns.include?(params[:sort]) ? params[:sort] : 'updated_at'
-    end
+  def sort_column
+    columns = Product.column_names
+    columns.include?(params[:sort]) ? params[:sort] : 'updated_at'
+  end
 
-    def sort_direction(bool)
-      %w(asc desc).include?(params[:direction]) ? params[:direction] : bool ? 'asc' : 'desc'
+  def sort_direction(bool)
+    if %w[asc desc].include?(params[:direction])
+      params[:direction]
+    else
+      bool ? 'asc' : 'desc'
     end
+  end
 
-    def index_search_params
-      search = params[:search] || {}
-      OpenStruct.new(
-        search_name: search[:search_name],
-      )
-    end
+  def index_search_params
+    search = params[:search] || {}
+    OpenStruct.new(
+      search_name: search[:search_name]
+    )
+  end
 end

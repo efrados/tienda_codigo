@@ -1,6 +1,7 @@
+# frozen_string_literal: true
+
 module Admin
   class QueryProductsController < Admin::ApplicationController
-
     def default_sorting_attribute
       :created_at
     end
@@ -13,18 +14,18 @@ module Admin
       search = params[resource_class.name.underscore.to_sym]
       if search && search[:custom_filter].present?
         case search[:custom_filter].to_i
-          when 1
-            resource_class.by_registered_users
-          when 2
-            resource_class.unanswered
-          when 3
-            resource_class.unanswered.by_registered_users
-          else
-            resource_class
+        when 1
+          resource_class.by_registered_users
+        when 2
+          resource_class.unanswered
+        when 3
+          resource_class.unanswered.by_registered_users
+        else
+          resource_class
         end
-     else
-       resource_class
-     end
+      else
+        resource_class
+      end
     end
 
     # Override this method to specify custom lookup behavior.

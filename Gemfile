@@ -10,18 +10,19 @@ gem 'jbuilder', '~> 2.7'
 gem 'puma', '~> 5.0'
 gem 'rails', '~> 6.1.0'
 
+gem 'cancancan'
 gem 'devise', github: 'heartcombo/devise', branch: 'ca-omniauth-2'
-gem 'omniauth-rails_csrf_protection'
 gem 'omniauth-facebook'
 gem 'omniauth-google-oauth2'
+gem 'omniauth-rails_csrf_protection'
 
 gem 'rubocop', require: false
 gem 'rubocop-rails', require: false
 gem 'rubocop-rspec', require: false
 
+gem 'active_storage_validations'
 gem 'image_processing'
 gem 'mini_magick'
-gem 'active_storage_validations'
 
 gem 'administrate'
 gem 'administrate-field-active_storage'
@@ -57,4 +58,4 @@ group :production do
   gem 'pg', '~> 1.1'
 end
 
-gem "hotwire-rails", "~> 0.1.3"
+gem 'hotwire-rails', '~> 0.1.3'

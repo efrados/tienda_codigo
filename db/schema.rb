@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_25_145020) do
+ActiveRecord::Schema.define(version: 2021_04_28_142006) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -70,8 +70,19 @@ ActiveRecord::Schema.define(version: 2021_04_25_145020) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.text "answer_text"
+    t.integer "recommended_points", default: 0, null: false
     t.index ["product_id"], name: "index_query_products_on_product_id"
     t.index ["user_id"], name: "index_query_products_on_user_id"
+  end
+
+  create_table "query_recommendations", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "query_product_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["query_product_id"], name: "index_query_recommendations_on_query_product_id"
+    t.index ["user_id", "query_product_id"], name: "index_query_recommendations_on_user_id_and_query_product_id", unique: true
+    t.index ["user_id"], name: "index_query_recommendations_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -102,4 +113,6 @@ ActiveRecord::Schema.define(version: 2021_04_25_145020) do
   add_foreign_key "favorites", "users"
   add_foreign_key "query_products", "products"
   add_foreign_key "query_products", "users"
+  add_foreign_key "query_recommendations", "query_products"
+  add_foreign_key "query_recommendations", "users"
 end

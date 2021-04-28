@@ -1,5 +1,6 @@
+# frozen_string_literal: true
 
-require "administrate/base_dashboard"
+require 'administrate/base_dashboard'
 
 class ProductDashboard < Administrate::BaseDashboard
   # ATTRIBUTE_TYPES
@@ -10,30 +11,30 @@ class ProductDashboard < Administrate::BaseDashboard
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
     query_products: Field::HasMany.with_options(searchable: false),
-    image:  Field::ActiveStorage.with_options(
-            searchable: false,
-            index_preview_size: [110, 110],
-            show_preview_size: [500, 500],
+    image: Field::ActiveStorage.with_options(
+      searchable: false,
+      index_preview_size: [110, 110],
+      show_preview_size: [500, 500]
     ),
     id: Field::Number.with_options(searchable: false),
     product_name: Field::String,
     product_description: Field::String,
     product_price: Field::Number.with_options(
       searchable: false,
-      prefix: "$ ",
+      prefix: '$ ',
       decimals: 2,
-      format: { 
-          formatter: :number_to_delimited,
-          formatter_options: { 
-              delimiter: ',',
-          },
-      },
+      format: {
+        formatter: :number_to_delimited,
+        formatter_options: {
+          delimiter: ','
+        }
+      }
     ),
     product_text: Field::Text,
     fav_counter: Field::Number.with_options(searchable: false),
     query_counter: Field::Number.with_options(searchable: false),
     created_at: Field::DateTime.with_options(searchable: false),
-    updated_at: Field::DateTime.with_options(searchable: false),
+    updated_at: Field::DateTime.with_options(searchable: false)
   }.freeze
 
   # COLLECTION_ATTRIBUTES
@@ -92,6 +93,6 @@ class ProductDashboard < Administrate::BaseDashboard
   # across all pages of the admin dashboard.
   #
   def display_resource(product)
-     "#{product.product_name}"
+    product.product_name.to_s
   end
 end

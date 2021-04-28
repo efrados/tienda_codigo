@@ -8,6 +8,7 @@
 ###### Mails - Sendgrid
 - Working in development for devise (Confirm and forgot password)
 - Automatic mail when sent a query
+- Automatic mail with response
 
 ###### UI
 - Stimulus for: send product_query
@@ -19,6 +20,9 @@
 
 ###### Login/Logout Users
 - Devise
+
+###### Security
+- CanCanCan
 
 ###### Backoffice
 - Administrate
@@ -38,9 +42,14 @@
 ###### Model/ Favorite
 - user:references product:references
 
+###### Model/ Vote
+- user:references product:references query:references
+
 ## TO DO's
 
 ## Refactor
+- my queries
+- rubocop
 
 ## Testing
 - Admin only test for administrate
@@ -50,7 +59,7 @@
 - Install Factories
 
 ## Funcionalities
--my queries
+- add recommend to queries
 <span class="badge bg-primary rounded-pill">14</span>
 add this to query_products.html.erb and implement upvote downvote questions
 

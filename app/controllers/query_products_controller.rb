@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class QueryProductsController < ApplicationController
+  load_and_authorize_resource
   include Pagy::Backend
 
   def create
@@ -15,7 +16,7 @@ class QueryProductsController < ApplicationController
   end
 
   def index
-    @grouped_query_products = QueryProduct.with_user(current_user).montly.order(created_at: :desc).group_by(&:product)
+    @grouped_query_products = QueryProduct.with_user(current_user).monthly.order(created_at: :desc).group_by(&:product)
   end
 
   private

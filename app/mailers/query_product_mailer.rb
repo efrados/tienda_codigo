@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 class QueryProductMailer < ApplicationMailer
-
   def new_query_email
     @query_product = params[:query_product]
     @product = params[:product]

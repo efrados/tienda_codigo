@@ -1,4 +1,6 @@
-require "administrate/base_dashboard"
+# frozen_string_literal: true
+
+require 'administrate/base_dashboard'
 
 class AdminUserDashboard < Administrate::BaseDashboard
   # ATTRIBUTE_TYPES
@@ -22,7 +24,7 @@ class AdminUserDashboard < Administrate::BaseDashboard
     unconfirmed_email: Field::String.with_options(searchable: false),
     confirmed_at: Field::DateTime.with_options(searchable: false),
     confirmation_sent_at: Field::DateTime.with_options(searchable: false),
-    type: Field::String,
+    type: Field::String
   }.freeze
 
   # COLLECTION_ATTRIBUTES
@@ -40,29 +42,29 @@ class AdminUserDashboard < Administrate::BaseDashboard
 
   # SHOW_PAGE_ATTRIBUTES
   # an array of attributes that will be displayed on the model's show page.
-  SHOW_PAGE_ATTRIBUTES = [
-    :id,
-    :email,
-    :created_at,
-    :updated_at,
-    :first_name,
-    :last_name,
-    :confirmation_token,
-    :unconfirmed_email,
-    :confirmed_at,
-    :confirmation_sent_at,
-    :type
+  SHOW_PAGE_ATTRIBUTES = %i[
+    id
+    email
+    created_at
+    updated_at
+    first_name
+    last_name
+    confirmation_token
+    unconfirmed_email
+    confirmed_at
+    confirmation_sent_at
+    type
   ].freeze
 
   # FORM_ATTRIBUTES
   # an array of attributes that will be displayed
   # on the model's form (`new` and `edit`) pages.
-  FORM_ATTRIBUTES = [
-    :email,
-    :password,
-    :first_name,
-    :last_name,
-    :type,
+  FORM_ATTRIBUTES = %i[
+    email
+    password
+    first_name
+    last_name
+    type
   ].freeze
 
   # COLLECTION_FILTERS

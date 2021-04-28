@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 class TurboFailureApp < Devise::FailureApp
   def respond
     if request_format == :turbo_stream
@@ -9,7 +10,7 @@ class TurboFailureApp < Devise::FailureApp
   end
 
   def skip_format?
-    %w(html turbo_stream */*).include? request_format.to_s
+    %w[html turbo_stream */*].include? request_format.to_s
   end
 end
 
@@ -47,25 +48,24 @@ Devise.setup do |config|
 
   config.sign_out_via = :delete
 
-  
-  if Rails.env == 'development' || Rails.env == 'test'
+  case Rails.env
+  when 'development', 'test'
     config.omniauth :facebook,
-          Rails.application.credentials[:facebook][:app_id],
-          Rails.application.credentials[:facebook][:app_secret],
-          token_params: { parse: :json }
+                    Rails.application.credentials[:facebook][:app_id],
+                    Rails.application.credentials[:facebook][:app_secret],
+                    token_params: { parse: :json }
     config.omniauth :google_oauth2,
-          Rails.application.credentials[:google][:app_id],
-          Rails.application.credentials[:google][:app_secret],
-          scope: 'userinfo.email,userinfo.profile' 
+                    Rails.application.credentials[:google][:app_id],
+                    Rails.application.credentials[:google][:app_secret],
+                    scope: 'userinfo.email,userinfo.profile'
 
-  elsif Rails.env == 'production'
+  when 'production'
     config.omniauth :facebook,
-      ENV['FACEBOOK_API_ID'],
-      ENV['FACEBOOK_API_SECRET'],
-      token_params: { parse: :json }
+                    ENV['FACEBOOK_API_ID'],
+                    ENV['FACEBOOK_API_SECRET'],
+                    token_params: { parse: :json }
     config.omniauth :google_oauth2,
-      ENV['GOOGLE_OAUTH_CLIENT_ID'],
-      ENV['GOOGLE_OAUTH_CLIENT_SECRET']
+                    ENV['GOOGLE_OAUTH_CLIENT_ID'],
+                    ENV['GOOGLE_OAUTH_CLIENT_SECRET']
   end
-
 end

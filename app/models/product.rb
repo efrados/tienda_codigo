@@ -10,9 +10,9 @@ class Product < ApplicationRecord
   validates :product_description, presence: true, length: { in: 10..30 }
   validates :product_text, presence: true, length: { in: 10..200 }
   validates :image, content_type: { in: %w[image/jpeg image/gif image/png],
-                                    message: "must be a valid image format" },
-                                    size: { less_than: 5.megabytes,
-                                    message:   "should be less than 5MB" }
+                                    message: 'must be a valid image format' },
+                    size: { less_than: 5.megabytes,
+                            message: 'should be less than 5MB' }
 
   def display_image
     image.variant(gravity: 'Center', resize: '630X487^', crop: '630X487+0+0').processed
@@ -28,20 +28,21 @@ class Product < ApplicationRecord
 
   def add_user_favorite(user)
     self.fav_counter = fav_counter + 1
-    self.save
-    self.users << user
+    save
   end
 
   def remove_user_favorite(user)
     self.fav_counter = fav_counter - 1
-    self.save
-    self.users.delete(user)
+    save
+    users.delete(user)
   end
 
-  scope :with_user_questions, ->(user){ joins(:query_products).where('query_products.user_id = ?', user.id) }
-  scope :search_bar, ->(search){ where('((LOWER(product_name) LIKE :name ) OR (LOWER(product_description) LIKE :name))',
-                                        name: "%#{search.downcase}%") }
-  
+  scope :with_user_questions, ->(user) { joins(:query_products).where('query_products.user_id = ?', user.id) }
+  scope :search_bar, lambda { |search|
+                       where('((LOWER(product_name) LIKE :name ) OR (LOWER(product_description) LIKE :name))',
+                             name: "%#{search.downcase}%")
+                     }
+
   def self.search(search, sort, direction)
     search ||= {}
     products = all

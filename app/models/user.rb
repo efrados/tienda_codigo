@@ -9,16 +9,18 @@ class User < ApplicationRecord
 
   validates_presence_of :first_name, :last_name
 
+  has_many :query_recommendations, dependent: :destroy
+  has_many :query_products, dependent: :destroy
   has_many :favorites, dependent: :destroy
   has_many :products, through: :favorites
 
   def self.from_omniauth(auth)
-    name_split = auth.info.name.split(" ")
+    name_split = auth.info.name.split(' ')
     user = User.where(email: auth.info.email).first
     user ||= User.new(provider: auth.provider, uid: auth.uid,
-                          last_name: name_split[0], first_name: name_split[1],
-                          email: auth.info.email, password: Devise.friendly_token[0, 20])
-    user.skip_confirmation if !user.confirmed?
+                      last_name: name_split[0], first_name: name_split[1],
+                      email: auth.info.email, password: Devise.friendly_token[0, 20])
+    user.skip_confirmation unless user.confirmed?
     user
   end
 
@@ -37,13 +39,12 @@ class User < ApplicationRecord
   end
 
   def is_admin?
-    self.try(:type) == 'AdminUser'
+    try(:type) == 'AdminUser'
   end
 
-  private
-    def skip_confirmation
-      self.skip_confirmation_notification!
-      self.save
-      self.confirm
-    end
+  def skip_confirmation
+    skip_confirmation_notification!
+    save
+    confirm
+  end
 end

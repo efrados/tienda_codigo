@@ -2,5 +2,10 @@
   <div class="ms-2 me-auto">
     <div class="fw-bold"><%= query_product.query_text %></div>
     <%= query_product.answer_text ? query_product.answer_text  : "No response yet. Vote this question so it's answered first!"%>
+
   </div>
+  <div>
+    <%= render 'query_recommendations/form', query_product: query_product %>
+  </div>
+    <span class="badge bg-primary rounded-pill">14</span>
 </li>

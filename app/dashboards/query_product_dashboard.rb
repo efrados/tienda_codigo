@@ -1,4 +1,6 @@
-require "administrate/base_dashboard"
+# frozen_string_literal: true
+
+require 'administrate/base_dashboard'
 
 class QueryProductDashboard < Administrate::BaseDashboard
   # ATTRIBUTE_TYPES
@@ -18,7 +20,7 @@ class QueryProductDashboard < Administrate::BaseDashboard
     query_email: Field::String,
     state: Field::String,
     created_at: Field::DateTime,
-    updated_at: Field::DateTime,
+    updated_at: Field::DateTime
   }.freeze
 
   # COLLECTION_ATTRIBUTES
@@ -73,14 +75,14 @@ class QueryProductDashboard < Administrate::BaseDashboard
   #     open: ->(resources) { resources.where(open: true) }
   #   }.freeze
   COLLECTION_FILTERS = {
-    unanswered: ->(resources){ resources.where(answer_text: nil) }
-  
+    unanswered: ->(resources) { resources.where(answer_text: nil) }
+
   }.freeze
 
   # Overwrite this method to customize how query products are displayed
   # across all pages of the admin dashboard.
   #
   def display_resource(query_product)
-     "Qp##{query_product.id}"
-   end
+    "Qp##{query_product.id}"
+  end
 end

@@ -1,0 +1,5 @@
+<% if current_user && current_user.query_recommendations.find_by(query_product_id: query_product.id) %>
+  <%= render 'query_recommendations/remove', query_product: query_product %>
+<% elsif current_user %>
+  <%= render 'query_recommendations/add', query_product: query_product %>
+<% end %>
