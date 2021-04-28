@@ -66,3 +66,8 @@ button, .dot{
     decoration: none;
   }
 }
+.collapser{
+  &:hover{
+    cursor: pointer;
+  }
+}

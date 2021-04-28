@@ -14,6 +14,10 @@ class QueryProductsController < ApplicationController
     end
   end
 
+  def index
+    @grouped_query_products = QueryProduct.with_user(current_user).montly.order(created_at: :desc).group_by(&:product)
+  end
+
   private
 
   def query_product_params

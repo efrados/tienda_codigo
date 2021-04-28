@@ -24,6 +24,17 @@ document.addEventListener('turbo:load', function() {
   var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
     return new bootstrap_tooltip(tooltipTriggerEl)
   })
+
+  const collapser = document.querySelectorAll(".collapser");
+  collapser.forEach(function(el) {
+    el.addEventListener("click", function( event ) {
+      console.log(el.id);
+      var id = el.id.replace("-answer", "");
+      document.getElementById(id + "-answer").classList.toggle('show');
+      document.getElementById(id).classList.toggle('show');
+    }, false);
+  });
+
   const cards = document.querySelectorAll(".product-card");
   cards.forEach(function(el) {
     el.addEventListener("mouseenter", function( event ) {

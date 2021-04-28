@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
 class Product < ApplicationRecord
-  has_many :query_products
   has_many :favorites, dependent: :destroy
   has_many :users, through: :favorites
+  has_many :query_products
   has_one_attached :image
 
   validates :product_name, presence: true, length: { in: 5..30 }
@@ -38,6 +38,7 @@ class Product < ApplicationRecord
     self.users.delete(user)
   end
 
+  scope :with_user_questions, ->(user){ joins(:query_products).where('query_products.user_id = ?', user.id) }
   scope :search_bar, ->(search){ where('((LOWER(product_name) LIKE :name ) OR (LOWER(product_description) LIKE :name))',
                                         name: "%#{search.downcase}%") }
   

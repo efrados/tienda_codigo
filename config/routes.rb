@@ -17,6 +17,7 @@ Rails.application.routes.draw do
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
   get 'static_pages/about'
   get 'favorites', to: 'products#favorites'
+  get 'queries', to: 'query_products#index'
   post '/', to: 'products#index'
   root to: 'products#index'
   resources :products, only: :show do

@@ -30,7 +30,7 @@
     <h6>Most Helpful Questions about this product </h6>
     <% if @queries %>
       <ul class="list-group">
-        <%= render @queries %>
+        <%= render @queries, inside_product: true %>
       </ul>
       <% if @queries.count > 5 %>
         <%== pagy_bootstrap_nav(@pagy) %>

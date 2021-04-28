@@ -50,6 +50,7 @@
 - Install Factories
 
 ## Funcionalities
+-my queries
 <span class="badge bg-primary rounded-pill">14</span>
 add this to query_products.html.erb and implement upvote downvote questions
 

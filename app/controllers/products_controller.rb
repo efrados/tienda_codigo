@@ -32,9 +32,9 @@ class ProductsController < ApplicationController
     end
 
     def index_search_params
-        search = params[:search] || {}
-        OpenStruct.new(
-          search_name: search[:search_name],
-        )
+      search = params[:search] || {}
+      OpenStruct.new(
+        search_name: search[:search_name],
+      )
     end
 end

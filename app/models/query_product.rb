@@ -15,6 +15,7 @@ class QueryProduct < ApplicationRecord
   scope :unanswered, ->(){ where(answer_text: nil) }
   scope :by_registered_users, ->(){ where.not(user: nil) }
   scope :by_unregistered_users, ->(){ where(user: nil) }
+  scope :with_user, ->(user){ where(user: user) }
 
   scope :montly, ->(){ where('created_at >= ?', Date.today.beginning_of_month ) } 
 
@@ -25,7 +26,7 @@ class QueryProduct < ApplicationRecord
     end
   
     def send_confirmation_query
-      #QueryProductMailer.with(query_product: self , product: product).new_query_email.deliver_later
+      QueryProductMailer.with(query_product: self , product: product).new_query_email.deliver_later
       product.query_counter = product.query_counter + 1
       product.save
     end

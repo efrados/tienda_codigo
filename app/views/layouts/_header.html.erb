@@ -23,23 +23,39 @@
       </ul>
 
       <div class="d-flex">
+
         <ul class="navbar-nav">
           <% if user_signed_in? %>
             <li class="nav-item">
               <li class="nav-item">
                 <%= link_to ' Products', favorites_path, class:'nav-link active bi bi-heart' %>
               </li>
-              <% if current_user.is_admin? %>
-                <li class="nav-item">
-                  <%= link_to 'Admin Panel', admin_root_path, class:'nav-link' %>
-                </li>
-              <% end %>
-              <%= link_to destroy_user_session_path,
-                         method: :delete, class: 'nav-link' do %>
-              <span class="text-white">
-                <%= current_user.email.truncate(25) %>(Sign out)
-              </span>
-              <% end %>
+              <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <%= current_user.email.truncate(25) %>
+          </a>
+          <ul class="dropdown-menu bd-navbar border-0" aria-labelledby="navbarDropdown">
+              <li>
+                <%= link_to 'My queries', queries_path,
+                    class:'dropdown-item navbar-dark text-white' %>
+              </li>
+            <% if current_user.is_admin? %>
+              <li>
+                <%= link_to 'Admin Panel', admin_root_path,
+                                          class:'dropdown-item navbar-dark text-white',
+                                          data: {turbo: 'false'} %>
+              </li>
+            <% end %>
+            <li>
+              <%= link_to '(Sign out)', destroy_user_session_path,
+                                        method: :delete,
+                                        class: 'dropdown-item navbar-dark text-white' %>
+            </li>
+          </ul>
+        </li>
+
+              
+                
             </li>
           <% else %>
             <li class="nav-item">
