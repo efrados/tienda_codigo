@@ -1,0 +1,14 @@
+<%= turbo_frame_tag dom_id(query_product) do %>
+  <div class="row">
+    <div class= "col-5 dot-container">
+      <%= form_with(model: [query_product, current_user.query_recommendations.build]) do |f| %>
+        <%= f.button bicon('bi-hand-thumbs-up-fill', class: 'dot dot-add', style: 'color: mediumseagreen;'),
+            class: 'btn-heart', 'data-bs-toggle': 'tooltip', 'data-bs-placement': 'right',
+            title: 'Recommend This Question' %>        
+      <% end %>
+    </div>
+    <div class= "col-5">
+      <%= render 'query_products/query_product_votes', query_product: query_product %>
+    </div>
+  </div>
+<% end %>

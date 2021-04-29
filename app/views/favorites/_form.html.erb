@@ -1,0 +1,5 @@
+<% if current_user && current_user.products.include?(product) %>
+  <%= render 'favorites/remove', product: product %>
+<% elsif current_user %>
+  <%= render 'favorites/add', product: product %>
+<% end %>

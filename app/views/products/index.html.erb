@@ -1,0 +1,12 @@
+<% provide(:search_bar, @search_name[:search_name]) %>
+<h1>Welcome!</h1>
+<% if @products.empty? %>
+  More products are coming
+<% else %>
+  <div class="container overflow-hidden mb-4">
+    <div class="row gx-3 gy-4">
+      <%= render @products, list: true %>
+      <%== pagy_bootstrap_nav(@pagy) %>
+    </div>
+  </div>
+<% end %>

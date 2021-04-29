@@ -1,0 +1,33 @@
+<div class="col-12 rounded-3">
+  <div class="card bg-white">
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">
+        <div class="row g-0">
+          <div class="col-3 col-sm-2 bg-white d-flex justify-content-center" >
+            <% if product.image.attached? %>
+              <%= image_tag product.display_image_mini, class: 'd-block w-100' %>
+            <% else %>
+              <img src="https://www.w3schools.com/css/img_lights.jpg" class="d-block w-100">
+            <% end %>
+          </div>
+          <div class="col-9 col-sm-10 card-body pb-3">
+            <div class="card-title row">
+            <h5 class="col-12 col-sm-6"><%= product.product_name.capitalize %></h5>
+              <div class="col-12 col-sm-6 card-text d-flex justify-content-end">
+                <%= number_to_currency product.product_price %>
+                <%= link_to '', product_path(product), class: 'stretched-link' %>
+              </div>
+            </div>
+            <p class="mb-0 mt-2" >
+              <%= product.product_description.capitalize %>
+            </p>
+          </div>
+        </div>
+      </li>
+      <li class="list-group-item p-0">
+        <ul class="list-group list-group-flush">
+          <%= render user_queries %>
+        </ul>
+      </li>
+    </ul>
+</div>

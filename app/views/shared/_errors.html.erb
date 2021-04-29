@@ -1,0 +1,13 @@
+<% if target && target.errors.present? %>
+  <div class="alert alert-danger alert-dismissible" role="alert">
+
+    <strong><%= pluralize(target.errors.count, "error") %> did not allow to save this 
+      <%= target.class.model_name.human.downcase %>:</strong>
+
+    <ul>
+      <% target.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>

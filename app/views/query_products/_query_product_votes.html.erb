@@ -1,0 +1,7 @@
+  <% if query_product.recommended_points > 0 %>
+    <span class="badge bg-primary rounded-pill"><%= query_product.recommended_points %></span>
+  <% elsif query_product.recommended_points < 0  %>
+    <span class="badge bg-danger rounded-pill"><%= query_product.recommended_points %></span>
+  <% else %>
+    <span class="badge bg-secondary rounded-pill">0</span>
+  <% end %>

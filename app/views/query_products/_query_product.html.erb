@@ -1,0 +1,6 @@
+<% inside_product ||= nil %>
+<% if inside_product %>
+  <%= render 'query_products/query_product_inside_product', query_product: query_product %>
+<% else %>
+  <%= render 'query_products/query_product_stand_alone', query_product: query_product %>
+<% end %>

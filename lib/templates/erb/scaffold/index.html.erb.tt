@@ -1,0 +1,47 @@
+<div class="container mx-auto my-8 px-4">
+  <div class="flex justify-between items-center mb-4">
+    <h2 class="pb-3 my-4 border-bottom font-weight-bold">
+      <%= plural_table_name.titleize %>
+    <%% if @<%= plural_table_name %>.exists? %>
+      <%%= link_to ' Create', new_<%= singular_route_name %>_path, class: "bi bi-plus  text-white btn btn-primary float-end font-weight-bold" %>
+    <%% end %>
+    </h2>
+</div>
+
+  <%% if @<%= plural_table_name %>.exists? %>
+    <div class="bg-white rounded shadow table-responsive">
+      <table class="w-full table table-striped table-bordered table-hover">
+        <thead>
+          <tr>
+<% attributes.reject(&:password_digest?).each do |attribute| -%>
+            <th class="p-3 uppercase text-gray-700"><%= attribute.human_name %></th>
+<% end -%>
+            <th class="p-3"></th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <%% @<%= plural_table_name %>.each do |<%= singular_table_name %>| %>
+            <tr class="border-t border-gray-400 hover:bg-gray-100">
+<% attributes.reject(&:password_digest?).each do |attribute| -%>
+              <td class="p-3"><%%= <%= singular_table_name %>.<%= attribute.column_name %> %></td>
+<% end -%>
+              <td class="p-3">
+                <%%= link_to '',<%= singular_table_name %>, class: "bi bi-eye btn btn-info btn-sm text-white" %>
+                <%%= link_to '', edit_<%= singular_table_name %>_path(<%= singular_table_name %>), class: "bi bi-pencil btn btn-primary btn-sm text-white" %>
+                <%%= link_to '', <%= singular_table_name %>, method: :delete, data: { confirm: 'Estas seguro de querer borrar este elemento?' }, class: "bi bi-trash btn btn-sm btn-danger text-white" %>
+              </td>
+            </tr>
+          <%% end %>
+        </tbody>
+      </table>
+    </div>
+
+  <%% else %>
+    <div class="py-3 bg-white rounded shadow d-flex justify-content-center p-8">
+      <div class="d-flex justify-content-center">
+        <%%= link_to ' Create <%= singular_table_name.titleize %>', new_<%= singular_table_name %>_path, class: "bi bi-plus btn btn-primary text-white" %>
+      </div>
+    </div>
+  <%% end %>
+</div>

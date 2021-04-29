@@ -30,4 +30,27 @@
 # available at https://guides.rubyonrails.org/i18n.html.
 
 en:
+  helpers:
+    label:
+      query_product:
+        query_text: query
+        answer_text: answer
   hello: "Hello world"
+  activerecord:
+    models:
+      query_product:
+        one: Query
+        other: Queries
+      admin_user:
+        one: Admin
+        other: Admins
+    attributes:
+      product:
+        product_name: name
+        product_price: price
+        product_description: description
+        query_product: query
+      query_product:
+        query_text:   "Text"
+        query_name:   "Name"
+        query_email:  "Email"

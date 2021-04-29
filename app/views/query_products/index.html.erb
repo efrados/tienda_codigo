@@ -1,0 +1,13 @@
+<h1>Your queries</h1>
+<% if @grouped_query_products.empty? %>
+  You haven't done any questions yet
+<% else %>
+  <div class="overflow-hidden mb-4">
+    <div class="row gy-4">
+      <% @grouped_query_products.each do |product, query_products| %>
+        <%= render 'products/product_with_questions', product: product,
+                                                      user_queries: query_products %>
+      <% end %>
+    </div>
+  </div>
+<% end %>

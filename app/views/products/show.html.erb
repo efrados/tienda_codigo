@@ -1,0 +1,50 @@
+<div class="row no-gutters bg-light position-relative">
+  <div class="col-lg-8 col-md-9 mb-md-0 p-md-2">
+    <% if @product.image.attached? %>
+      <%= image_tag @product.display_image, class: 'd-block w-100' %>
+    <% else %>
+      <img src="https://www.w3schools.com/css/img_lights.jpg" class="d-block w-100">
+    <% end %>
+    <div class="card-img-overlay btn-lg">
+      <%= render 'favorites/form', product: @product %>
+    </div>
+  </div>
+
+  <div class="col-lg-4 col-md-3 position-static py-3 pe-2 pl-md-0 h-auto d-inline-block">
+    <div class="h-100 py-2 pe-2">
+        <h5 class="card-title"><%= @product.product_name.capitalize %></h5>
+        <div class="card-text mt-3">
+          <h4><%= number_to_currency @product.product_price %></h4>
+        </div>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12 p-3">
+    <h5 class="mt-0"><%= @product.product_description.capitalize %></h5>
+    <h6><%= @product.product_text.capitalize %> </h6>
+  </div>
+</div>
+<div class="row mt-3">
+  <div class="col-md-8 p-3">
+    <h6>Most Helpful Questions about this product </h6>
+    <% if @queries %>
+      <ul class="list-group">
+        <%= render @queries, inside_product: true %>
+      </ul>
+      <% if @queries.count > 5 %>
+        <%== pagy_bootstrap_nav(@pagy) %>
+      <% end %>
+    <% else %>
+      <h6>No questions for this product, be the first!</h6>
+    <% end %>
+  </div>
+</div>
+<div class="row mt-3">
+  <div class="col-md-12 p-1">
+    <h6 class="mt-0">Ask about this product</h6>
+    <div data-controller= "query-product">
+      <%= render 'query_products/form' %>
+    </div>
+  </div>
+</div>

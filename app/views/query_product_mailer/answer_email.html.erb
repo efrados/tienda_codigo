@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h3>Thank you for your patience <%= @query_product.query_name %>!</h3>
+    <br>
+    <p>This is the answer to your query:<br>
+    --------------------------
+    <p><%= @query_product.answer_text %></p>
+    --------------------------
+    <br>
+    <p>This was your query: <br>
+    <%= @query_product.query_text %></p>
+    --------------------------
+    </p>
+
+    <p>Let us know if you have other questions regarding <%= @product.product_name %></p>
+
+    <h4>Thanks! The team of Tienda-Codigo</h4>
+  </body>
+</html>

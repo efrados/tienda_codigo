@@ -1,0 +1,27 @@
+<%%= form_with(model: <%= model_resource_name %>) do |form| %>
+  <%%= render "shared/errors",  :target => @<%= singular_table_name %> %>
+
+<% attributes.each do |attribute| -%>
+  <div class="mb-3">
+<% if attribute.password_digest? -%>
+    <%%= form.label :password, class: "form-label" %>
+    <%%= form.password_field :password, class: "form-control" %>
+  </div>
+
+  <div class="mb-3">
+    <%%= form.label :password_confirmation, class: "form-label" %>
+    <%%= form.password_field :password_confirmation, class: "form-control" %>
+<% elsif attribute.attachments? -%>
+    <%%= form.label :<%= attribute.column_name %>, class: "form-label" %>
+    <%%= form.<%= attribute.field_type %> :<%= attribute.column_name %>, multiple: true, class: "form-control" %>
+<% else -%>
+    <%%= form.label :<%= attribute.column_name %>, class: "form-label" %>
+    <%%= form.<%= attribute.field_type %> :<%= attribute.column_name %>, class: "form-control" %>
+<% end -%>
+  </div>
+
+<% end -%>
+  <div class="actions mt-5 d-flex justify-content-center">
+    <%%= form.submit class: "btn btn-primary ", data: { disable_with: "Wait..." } %>
+  </div>
+<%% end %>

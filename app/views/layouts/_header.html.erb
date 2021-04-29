@@ -1,0 +1,72 @@
+<header class="navbar navbar-expand-md navbar-dark mb-4 bd-navbar">
+  <nav class="col-sm-12 col-md-12 col-lg-10 offset-lg-1 col-xl-8 offset-xl-2 container-fluid">
+    <%= link_to 'Tienda-Codigo', root_path, class:'navbar-brand' %>
+    <button class="navbar-toggler flex-row-reverse" type="button" data-bs-toggle="collapse" data-bs-target="#bdNavbar" aria-controls="bdNavbar" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="bdNavbar">
+      <ul class="navbar-nav mx-auto mb-2 mb-lg-0 justify-content-center">
+        <li class="pt-1 ms-3">
+          <%= form_for :search, url: self.send('root_path'), method: :get, html: { class: "row g-1" } do |f| %>
+            <%= hidden_field_tag :sort, @sort %>
+            <%= hidden_field_tag :direction, @direction %>
+            <div class="col-auto">
+              <%= f.text_field :search_name,value: yield(:search_bar) , placeholder: "Search Products", class: "form-control form-control-sm col-sm-1" %>
+            </div>
+            <div class="col-auto">
+              <button class="btn btn-sm btn-outline-primary bi bi-search" type="submit">
+                Search
+              </button>
+            </div>
+          <% end %>
+        </li>
+      </ul>
+
+      <div class="d-flex">
+
+        <ul class="navbar-nav">
+          <% if user_signed_in? %>
+            <li class="nav-item">
+              <li class="nav-item">
+                <%= link_to ' Products', favorites_path, class:'nav-link active bi bi-heart' %>
+              </li>
+              <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <%= current_user.email.truncate(25) %>
+          </a>
+          <ul class="dropdown-menu bd-navbar border-0" aria-labelledby="navbarDropdown">
+              <li>
+                <%= link_to 'My queries', queries_path,
+                    class:'dropdown-item navbar-dark text-white' %>
+              </li>
+            <% if current_user.is_admin? %>
+              <li>
+                <%= link_to 'Admin Panel', admin_root_path,
+                                          class:'dropdown-item navbar-dark text-white',
+                                          data: {turbo: 'false'} %>
+              </li>
+            <% end %>
+            <li>
+              <%= link_to '(Sign out)', destroy_user_session_path,
+                                        method: :delete,
+                                        class: 'dropdown-item navbar-dark text-white' %>
+            </li>
+          </ul>
+        </li>
+
+              
+                
+            </li>
+          <% else %>
+            <li class="nav-item">
+              <%= link_to 'Sign up', new_user_registration_path, class:'nav-link' %>
+            </li>
+            <li class="nav-item">
+              <%= link_to 'Sign in', new_user_session_path, class:'nav-link' %>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>

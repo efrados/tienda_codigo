@@ -1,0 +1,77 @@
+@import "~bootstrap/scss/bootstrap";
+@import "~bootstrap/scss/_variables.scss";
+.bd-navbar{
+  padding: .75rem 0;
+  background-color: $orange-400;
+}
+
+#error_explanation {
+  ul li {
+    font-size: 12px;
+    list-style: none;
+  }
+}
+
+button, .dot{
+  background-color: transparent;
+  border: 0;
+}
+
+
+.dot {
+  z-index: 2;
+  position: relative;
+  height: 1.4em;
+  width: 1.4em;
+  border-radius: 50%;
+  display: inline-block;
+  &:hover{
+    transition: .2s;
+  }
+}
+
+.btn-sm .dot{
+  font-size: clamp(1.5rem, calc(50% + 2vw), 2rem);
+  padding-top: 1px;
+}
+
+.btn-lg .dot{
+  padding-top: 2px;
+  font-size: calc(150% + 2vw);
+  min-font-size: 1.5rem;
+}
+
+.dot-rmv {
+  background-color: rgba(3, 169, 244, 0.7);
+  &:hover{
+    background-color: rgba(30, 69, 244, 0.7) ;
+  }
+}
+
+.dot-container{
+  margin-top: 0.1rem !important
+}
+
+.dot-add {
+  background-color: #bbb;
+  &:hover{
+    background-color: rgba(244, 69, 244, 0.7) ;
+  }
+}
+
+.btn-heart {
+  &:hover{
+    text-decoration: none; 
+    decoration: none;
+    background-color: transparent ;
+  }
+  &:visited{
+    text-decoration: none;
+    decoration: none;
+  }
+}
+.collapser{
+  &:hover{
+    cursor: pointer;
+  }
+}
